@@ -11,7 +11,7 @@ export class RecipeListViewComponent implements OnInit {
 
   recipes$ = this.service.getMeal('S');
 
-  constructor(private service: MealService, private router: Router) {
+  constructor(private service: MealService, public router: Router) {
   }
 
   ngOnInit(): void {
