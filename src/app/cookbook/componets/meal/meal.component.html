@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="title">
+    <div >{{name$ | async}}</div>
+    <button mat-icon-button [routerLink]="['/AllCulinaryRecipes']">
+      <mat-icon >reply</mat-icon>
+    </button>
+  </div>
+  <div class="save" [formGroup]="model">
+    <mat-form-field appearance="outline">
+      <mat-label>Nowy przepis:</mat-label>
+      <label>
+        <input matInput formControlName="name"  (keyup.enter)="addRecipe()" *ngIf="!isEdit">
+        <input matInput formControlName="name"  (keyup.enter)="change()" *ngIf="isEdit">
+      </label>
+    </mat-form-field>
+    <button mat-raised-button (click)="addRecipe()" [disabled]="model.invalid" *ngIf="!isEdit">DODAJ</button>
+    <button mat-raised-button (click)="change()" [disabled]="model.invalid" *ngIf="isEdit">ZMIEŃ</button>
+    <div>
+      <mat-form-field>
+        <mat-label>Alergie</mat-label>
+        <mat-select [formControl]="toppings" multiple>
+          <mat-option *ngFor="let allergy of allergies$ | async" [value]="allergy.allergies">{{allergy.allergies}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      {{toppings.valueChanges | async}}
+    </div>
+  </div>
+  <div>
+    <div class="subtitle" *ngFor="let recipe of recipes$ | async; index as i">
+      <div><a [routerLink]="['/ReadyRecipe',recipe.recipeId]">{{i + 1}}.{{recipe.name}}</a>
+      </div>
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #appMenu>
+          <button mat-menu-item (click)="delete(recipe.recipeId)">Usuń</button>
+          <button mat-menu-item (click)="edit(recipe.recipeId)">Edytuj</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</div>

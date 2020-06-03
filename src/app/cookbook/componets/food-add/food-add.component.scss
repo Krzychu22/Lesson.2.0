@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 100%;
+  background: antiquewhite;
+  border-radius: 10px 10px 0 0;
+}
+
+.board {
+  margin-top: 1vmin;
+  margin-bottom: 1vmin;
+  display: flex;
+  width: 96%;
+}
+
+.window1, .window2{
+  width: 22.5%;
+}
+.window1{
+  margin-top: .3vmin;
+}
+.button{
+  width: 10%;
+}
+
+mat-form-field {
+  width: 95%;
+  font-size: 1.6vmin;
+  height: 6vmin;
+}
+button {
+  width: 100%;
+  margin-top: 3px;
+  font-size: 2vmin;
+  text-align: center;
+  height: 6vmin;
+}
+mat-select-panel {
+  background-color: deeppink;
+}

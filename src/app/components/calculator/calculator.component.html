@@ -1,0 +1,56 @@
+<div class="calculator">
+  <div class="window">
+    <input
+      [(ngModel)]="display">
+  </div>
+  <div class="symbols">
+    <div (click)="number(1)">
+      1
+    </div>
+    <div (click)="number(2)">
+      2
+    </div>
+    <div (click)="number(3)">
+      3
+    </div>
+    <div (click)="sign('+')">
+      +
+    </div>
+    <div (click)="number(4)">
+      4
+    </div>
+    <div (click)="number(5)">
+      5
+    </div>
+    <div (click)="number(6)">
+      6
+    </div>
+    <div (click)="sign('-')">
+      -
+    </div>
+    <div (click)="number(7)">
+      7
+    </div>
+    <div (click)="number(8)">
+      8
+    </div>
+    <div (click)="number(9)">
+      9
+    </div>
+    <div (click)="sign('/')">
+      /
+    </div>
+    <div (click)="number(0)">
+      0
+    </div>
+    <div (click)="remove('<')">
+      <
+    </div>
+    <div (click)="sign('*')">
+      *
+    </div>
+    <div (click)="result('=')">
+      =
+    </div>
+  </div>
+</div>

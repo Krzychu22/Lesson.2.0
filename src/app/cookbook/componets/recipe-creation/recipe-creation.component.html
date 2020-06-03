@@ -1,0 +1,112 @@
+<div>
+  <div class="titleAllPage">
+    <div class="button">
+      <a mat-icon-button (click)="back.emit()">
+        <mat-icon>arrow_back
+          <span class="tooltipText">COFNIJ</span>
+        </mat-icon>
+      </a>
+    </div>
+
+    <div class="title">nowy przepis</div>
+
+    <div class="button">
+      <a href="#popupFood" mat-icon-button *ngIf="allowEdit">
+        <mat-icon>kitchen
+          <span class="tooltipText">DODAJ ŻYWNOŚĆ</span>
+        </mat-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <mat-form-field [formGroup]="modelTitle" *ngIf="allowEdit">
+      <mat-label>Nazwa dania:</mat-label>
+      <label>
+        <input matInput formControlName="name" placeholder="Tu wpisz nazwe dania" (keyup)="add.emit(modelTitle.value)">
+      </label>
+    </mat-form-field>
+
+    <app-recipe-hashtag-add
+      [allowEdit]="allowEdit"
+      (add)="addHashtag($event)"
+      [model]="modelHashtag"
+      [hashtags]="hashtag$ | async"
+    ></app-recipe-hashtag-add>
+
+    <app-recipe-hashtag-list
+      [allowEdit]="allowEdit"
+      (delete)="deleteHashtag($event)"
+      [isEditHashtag]="isEditHashtag"
+      [hashtags]="hashtag$ | async"
+    ></app-recipe-hashtag-list>
+
+    <app-product-add
+      [allowEdit]="allowEdit"
+      [products]="products$ | async"
+      [foods]="foods$ | async"
+      [isEditFood]="isEditFood"
+      (add)="addProduct($event)"
+      (change)="changeProduct()"
+      [model]="modelFood"
+      [unit]="unit$ | async"
+    ></app-product-add>
+
+    <app-products-list
+      [products]="products$ | async"
+      [foods]="foods$ | async"
+      [allowEdit]="allowEdit"
+      (delete)="deleteProduct($event)"
+      (edit)="editProduct($event)"
+    ></app-products-list>
+
+    <app-realization-add
+      [allowEdit]="allowEdit"
+      [isEditRealization]="isEditRealization"
+      [realizations]="realization$ | async"
+      (add)="addRealization($event)"
+      (change)="changeRealization()"
+      [model]="modelRealization"
+    ></app-realization-add>
+
+
+    <app-realization-list
+      [allowEdit]="allowEdit"
+      [realizations]="realization$ | async"
+      (delete)="deleteRealization($event)"
+      (edit)="editRealization($event)"
+      (drop)="dropRealization($event)"
+    ></app-realization-list>
+  </div>
+  <button class="buttonSave" mat-raised-button (click)="saveRecipe.emit(modelTitle.value)">ZAPISZ</button>
+
+</div>
+
+<div id="popupFood" class="overlayFood">
+  <div class="scroll">
+    <div class="popupFood">
+      <div class="contentFood">
+
+        <div class="titleAllPage titleFoodAdd">
+          <a class="button">
+          </a>
+
+
+          <div class="title">dodaj produkt</div>
+
+          <div class="button">
+            <a mat-icon-button class="close" href="#">
+              <mat-icon>close
+              </mat-icon>
+            </a>
+          </div>
+        </div>
+
+        <app-food-creation
+          [allowEdit]="allowEdit"
+        ></app-food-creation>
+
+      </div>
+    </div>
+  </div>
+</div>

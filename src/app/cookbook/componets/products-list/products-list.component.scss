@@ -1,0 +1,48 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  div {
+    width: 100%;
+  }
+}
+
+.board {
+  width: 100%;
+  background: antiquewhite;
+  margin-bottom: .5vmin;
+  display: grid;
+  grid-template-columns: 35px 50% auto 50px;
+}
+
+.number {
+  margin-bottom: auto;
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+  padding-top: 4vmin;
+  padding-bottom: 4vmin;
+  font-size: 1.85vmin;
+}
+
+.text {
+  margin-bottom: auto;
+  margin-top: auto;
+  width: 100%;
+  padding-top: 4vmin;
+  padding-bottom: 4vmin;
+  font-size: 1.85vmin;
+  overflow-wrap: anywhere;
+  text-transform: lowercase;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.button {
+  margin: auto;
+}

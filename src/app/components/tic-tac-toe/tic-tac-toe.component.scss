@@ -1,0 +1,45 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div {
+  background-color: black;
+}
+
+.board {
+
+  width: calc(100vmin - 60px);
+  height: calc(100vmin - 60px);
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 32% 32% 32%;
+  border: 15px solid black;
+
+  div {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+
+
+    .window {
+      background-color: white;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 150px;
+
+    }
+  }
+
+}
+.reset{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+

@@ -1,0 +1,16 @@
+<div>
+  <div class="board" *ngFor="let food of foods; index as a">
+    <div class="number">{{a + 1}}</div>
+    <div class="text">{{food.name}}</div>
+    <div class="number">{{food.unit}}</div>
+    <div class="number">{{food.calories}} kalorii</div>
+    <div class="number">{{food.allergies}}</div>
+    <button class="button" mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="allowEdit">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #appMenu>
+      <button mat-menu-item (click)="delete.emit(food.foodId)">Usuń</button>
+      <button mat-menu-item (click)="edit.emit(food.foodId)">Edytuj</button>
+    </mat-menu>
+  </div>
+</div>

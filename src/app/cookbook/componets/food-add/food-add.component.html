@@ -1,0 +1,39 @@
+<div class="board" [formGroup]="model">
+  <div class="window1">
+    <mat-form-field appearance="fill">
+      <mat-label>Produkt:</mat-label>
+      <label>
+        <input matInput formControlName="name">
+      </label>
+    </mat-form-field>
+  </div>
+  <div class="window1">
+    <mat-form-field appearance="fill">
+      <mat-label>Jednostka:</mat-label>
+      <label>
+        <input matInput maxlength="10" formControlName="unit">
+      </label>
+    </mat-form-field>
+  </div>
+  <div class="window2">
+    <mat-form-field appearance="outline">
+      <mat-label>Kalorie:</mat-label>
+      <label>
+        <input type="number" min="0" matInput formControlName="calories">
+      </label>
+    </mat-form-field>
+  </div>
+  <div class="window2">
+    <mat-form-field appearance="outline">
+      <mat-label>Alergeny:</mat-label>
+      <mat-select formControlName="allergies">
+        <mat-option >Nic</mat-option>
+        <mat-option *ngFor="let allergy of allergies" [value]="allergy.allergies">{{allergy.allergies}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="button">
+    <button class="product" mat-raised-button (click)="add.emit(model.value); model.reset()" [disabled]="model.invalid" *ngIf="!isEditFood">DODAJ</button>
+    <button class="product" mat-raised-button (click)="change.emit(model.value); model.reset()" [disabled]="model.invalid" *ngIf="isEditFood">ZMIEŃ</button>
+  </div>
+</div>

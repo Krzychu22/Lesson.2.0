@@ -1,0 +1,61 @@
+.piece {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+.b-p {
+
+  background-image: url("/assets/figury.szachowe/Chess_pdt45.svg");
+}
+
+.w-p {
+
+  background-image: url("/assets/figury.szachowe/Chess_plt45.svg");
+}
+
+.b-b {
+  background-image: url("/assets/figury.szachowe/Chess_bdt45.svg");
+
+}
+
+.w-b {
+  background-image: url("/assets/figury.szachowe/Chess_blt45.svg");
+
+}
+
+.b-k {
+  background-image: url("/assets/figury.szachowe/Chess_kdt45.svg");
+
+}
+
+.w-k {
+  background-image: url("/assets/figury.szachowe/Chess_klt45.svg");
+}
+
+.b-n {
+  background-image: url("/assets/figury.szachowe/Chess_ndt45.svg");
+}
+
+.w-n {
+  background-image: url("/assets/figury.szachowe/Chess_nlt45.svg");
+}
+
+.b-q {
+  background-image: url("/assets/figury.szachowe/Chess_qdt45.svg");
+}
+
+.w-q {
+  background-image: url("/assets/figury.szachowe/Chess_qlt45.svg");
+}
+
+.b-r {
+  background-image: url("/assets/figury.szachowe/Chess_rdt45.svg");
+}
+
+.w-r {
+  background-image: url("/assets/figury.szachowe/Chess_rlt45.svg");
+}

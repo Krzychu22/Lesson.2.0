@@ -1,0 +1,75 @@
+:host {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: papayawhip;
+}
+
+.list {
+  display: grid;
+  grid-template-rows: 10vmax auto;
+  height: 90%;
+  background-color: papayawhip;
+  grid-gap: 5px;
+}
+
+.title {
+  padding-top: 5px;
+  padding-bottom: 15px;
+  background-color: bisque;
+  display: flex;
+
+
+}
+
+mat-form-field {
+  padding-right: 10px;
+  padding-left: 10px;
+
+}
+
+.tasks {
+  background-color: bisque;
+
+}
+
+.task {
+  font-size: 20px;
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 5% 30% 30% 30% 5%;
+
+  div {
+    text-align: center;
+  }
+}
+
+.save {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.change {
+  position: absolute;
+  right: 10px;
+  top: 60px;
+}
+
+.reset {
+  position: absolute;
+  right: 10px;
+  top: 110px;
+}
+
+
+div {
+  button {
+    height: 22.66px;
+  }
+}

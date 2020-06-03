@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="title">
+    <div>{{name$ | async}}</div>
+    <button mat-icon-button [routerLink]="['/Meal', mealId$ | async]">
+      <mat-icon>reply</mat-icon>
+    </button>
+  </div>
+  <div class="titleProduct">
+    <div>Składniki:</div>
+    <button mat-icon-button [routerLink]="['/NotReadyRecipe', recipeId$ | async]">
+      <mat-icon>create</mat-icon>
+    </button>
+  </div>
+  <div>
+    <div class="product" *ngFor="let product of products$ | async; index as a">
+      <div>{{a + 1}}.</div>
+      <div class="uppercaseFirstLetter">{{(product.foodId | food)?.name}}</div>
+      <div> {{product.amount}} {{(product.foodId | food)?.unit}}</div>
+    </div>
+  </div>
+  <div class="calories">
+    <div>Kalorie: </div>
+    <div>{{calories$ | async}}</div>
+  </div>
+  <div class="titleRealization">
+    Wykonanie:
+  </div>
+  <div class="realization">
+    <div class="box">
+      <mat-horizontal-stepper>
+        <mat-step *ngFor="let realization of realizations$ | async index as i">
+          <div class="container">
+              <button mat-icon-button matStepperPrevious>
+                <mat-icon>keyboard_arrow_left</mat-icon>
+              </button>
+              <div style="line-height: 120%">{{i+1}}. {{realization.content}}
+              </div>
+              <button mat-icon-button matStepperNext>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+              </button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="card">
+  <div class="title"> PRZEPISY</div>
+  <div class="subtitle" *ngFor="let meal of meals$ | async index as i"><a [routerLink]="['/Meal',meal.mealId]">{{i + 1}}. {{meal.name}}</a></div>
+</div>

@@ -1,0 +1,33 @@
+<button mat-raised-button class="reset"(click)="reset()">RESET</button>
+<div>
+  <head class="board">
+    <div (click)="(drawsign(1))">
+      <button class="window">{{sign1}}</button>
+    </div>
+    <div (click)="(drawsign(2))">
+      <button class="window">{{sign2}}</button>
+    </div>
+    <div (click)="(drawsign(3))">
+      <button class="window">{{sign3}}</button>
+    </div>
+    <div (click)="(drawsign(4))">
+      <button class="window">{{sign4}}</button>
+    </div>
+    <div (click)="(drawsign(5))">
+      <button class="window">{{sign5}}</button>
+    </div>
+    <div (click)="(drawsign(6))">
+      <button class="window">{{sign6}}</button>
+    </div>
+    <div (click)="(drawsign(7))">
+      <button class="window">{{sign7}}</button>
+    </div>
+    <div (click)="(drawsign(8))">
+      <button class="window">{{sign8}}</button>
+    </div>
+    <div (click)="(drawsign(9))">
+      <button class="window">{{sign9}}</button>
+    </div>
+  </head>
+</div>
+<ng-template #winer>Wygrałeś</ng-template>

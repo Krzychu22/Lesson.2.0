@@ -1,0 +1,4 @@
+<app-list-with-search [recipes]="recipes$ | async"
+                      (picked)="router.navigate(['/ReadyRecipe',$event])"
+></app-list-with-search>
+

@@ -1,0 +1,13 @@
+<app-recipe-search
+  [recipes]="recipes"
+  [hasHints]="false"
+  (result)="searchResult$.next($event)"
+  (pickedRecipe)="picked.emit($event)"
+></app-recipe-search>
+<app-recipe-list
+  [isPicker]="true"
+  [allowEdit]="true"
+  [recipes]="searchResult$ | async"
+  [isSearch]="true"
+  (picked)="picked.emit($event)"
+></app-recipe-list>

@@ -1,0 +1,108 @@
+<div>
+  <div class="titleAllPage">
+    <div class="button">
+      <a mat-icon-button (click)="back.emit()">
+        <mat-icon>arrow_back
+          <span class="tooltipText">COFNIJ</span>
+        </mat-icon>
+      </a>
+    </div>
+
+    <div class="title">Naleśniki</div>
+
+    <div class="button">
+      <a mat-icon-button (click)="edit.emit()" *ngIf="allowEdit">
+        <mat-icon>edit
+          <span class="tooltipText">EDYTUJ PRZEPIS</span>
+        </mat-icon>
+      </a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="titleHashtag" *ngIf="!listHashtag">Hashtag</div>
+
+    <app-recipe-hashtag-list
+      [allowEdit]="!allowEdit"
+      [hashtags]="hashtag$ | async"
+    ></app-recipe-hashtag-list>
+
+    <div class="titleProduct">Składniki</div>
+
+    <app-products-list
+      [allowEdit]="!allowEdit"
+      [products]="products$ | async"
+      [foods]="foods$ | async"
+    ></app-products-list>
+
+    <div class="titleRealization">Wykonanie</div>
+
+    <app-realization-list
+      [allowEdit]="!allowEdit"
+      [realizations]="realization$ | async"
+    ></app-realization-list>
+  </div>
+
+  <a class="buttonSave" href="#popupRealization">
+    <button class="buttonSave" mat-raised-button>ZACZNIJMY GOTOWAĆ</button>
+  </a>
+
+</div>
+
+<div id="popupRealization" class="overlayRealization">
+  <div class="scroll">
+    <div class="popupRealization">
+      <div class="contentRealization">
+
+        <div class="titleAllPage titleRealizationPopup">
+          <a class="button">
+          </a>
+          <div class="title">miłej zabawy</div>
+          <div class="button">
+            <a class="close" mat-icon-button href="#">
+              <mat-icon>close
+              </mat-icon>
+
+            </a>
+          </div>
+        </div>
+
+        <div class="box">
+          <mat-horizontal-stepper>
+            <mat-step>
+              <div class="containerRealization">
+                <a> </a>
+                <div>
+                  <div class="title">Przygotuj:</div>
+                  <app-products-list
+                    [allowEdit]="!allowEdit"
+                    [products]="products$ | async"
+                    [foods]="foods$ | async"
+                  ></app-products-list>
+                </div>
+                <button mat-icon-button matStepperNext>
+                  <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+              </div>
+            </mat-step>
+            <mat-step *ngFor="let realization of realization$ | async index as i">
+              <div class="containerRealization">
+                <button mat-icon-button matStepperPrevious>
+                  <mat-icon>keyboard_arrow_left</mat-icon>
+                </button>
+                <div>
+                  <div class="title">Pora ma magie:</div>
+                  <div>{{i+1}} {{realization.content}}</div>
+                </div>
+                <button mat-icon-button matStepperNext>
+                  <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+              </div>
+            </mat-step>
+          </mat-horizontal-stepper>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

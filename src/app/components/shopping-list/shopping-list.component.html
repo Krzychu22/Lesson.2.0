@@ -1,0 +1,65 @@
+<button mat-raised-button class="reset" (click)="reset()">RESET</button>
+<h1>{{taskType}}</h1>
+<table class="list">
+
+  <div class="title" [formGroup]="model">
+    <mat-form-field appearance="outline">
+      <mat-label>Produkt:</mat-label>
+      <input matInput formControlName="title">
+      <mat-error *ngIf="model.controls.title.touched && model.controls.title.errors?.required">to pole jest wymagane
+      </mat-error>
+      <mat-error *ngIf="model.controls.title.touched && model.controls.title.errors?.minlength">
+        Nazwa produktu musi mieć conajmniej {{model.controls.title.errors.minlength.requiredLength}} a Twoja nazwa
+        ma {{model.controls.title.errors.minlength.actualLength}} znaków
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Ilość:</mat-label>
+      <input type="number" min="1" matInput formControlName="quantity">
+      <!--             (keyup.enter)="model.invalid"-->
+    </mat-form-field>
+    <!--    {{model.controls.title.errors|json}}-->
+    <mat-form-field appearance="outline">
+      <mat-label>Jednostka:</mat-label>
+      <mat-select formControlName="unit">
+        <mat-option>Nic</mat-option>
+        <mat-option *ngFor="let unit of units" [value]="unit">{{unit}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)="addTask()" [disabled]="model.invalid" *ngIf="!isEdit">DODAJ</button>
+    <button mat-raised-button (click)="change()" [disabled]="model.invalid" *ngIf="isEdit">ZMIEŃ</button>
+  </div>
+  <div class="tasks">
+    <div class="task" *ngFor="let task of tasks$ | async;  index as i" [ngClass]="{isDone: task.isDone}">
+      <div>
+        <mat-checkbox [checked]="task.isDone" (change)="onTaskDone(task.taskId)"></mat-checkbox>
+      </div>
+      <div>{{i + 1}}. {{task.title}}</div>
+      <div>{{task.quantity}}</div>
+      <div>{{task.unit}}</div>
+      <div>
+        <button (click)="delete(task.taskId)">x</button>
+        <button (click)="edit(task.taskId)">edytuj</button>
+      </div>
+    </div>
+  </div>
+</table>
+
+
+<!--<mat-form-field appearance="outline">-->
+<!--  <mat-label>Input</mat-label>-->
+<!--  <input matInput>-->
+<!--</mat-form-field>-->
+
+<!--<mat-checkbox>Check me!</mat-checkbox>-->
+
+
+<!--<mat-form-field appearance="outline">-->
+<!--  <mat-label>Select an option</mat-label>-->
+<!--  <mat-select>-->
+<!--    <mat-option>None</mat-option>-->
+<!--    <mat-option value="option1">Option 1</mat-option>-->
+<!--    <mat-option value="option2">Option 2</mat-option>-->
+<!--    <mat-option value="option3">Option 3</mat-option>-->
+<!--  </mat-select>-->
+<!--</mat-form-field>-->

@@ -1,0 +1,11 @@
+div {
+  display: flex;
+
+  app-shopping-list {
+    display: block;
+    position: relative;
+    margin: 20px;
+    width:auto;
+    flex:1;
+  }
+}

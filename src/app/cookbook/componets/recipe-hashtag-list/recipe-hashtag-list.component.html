@@ -1,0 +1,8 @@
+
+  <div class="board" *ngFor="let hashtag of hashtags; index as a">
+
+    <div class="text">{{hashtag.hashtag}}</div>
+
+
+    <button class="button" mat-icon-button (click)="delete.emit(hashtag.hashtag)" *ngIf="allowEdit">&times;</button>
+  </div>

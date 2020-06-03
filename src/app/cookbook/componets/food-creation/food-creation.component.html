@@ -1,0 +1,19 @@
+<div>
+  <div class="container">
+    <app-food-add
+      (add)="addFood($event)"
+      (change)="changeFood()"
+      [isEditFood]="isEditFood"
+      [foods]="foods$ | async"
+      [allergies]="allergies$ | async"
+      [model]="modelFood"
+    ></app-food-add>
+
+    <app-food-list
+      [allowEdit]="allowEdit"
+      [foods]="foods$ | async"
+      (delete)="deleteFood($event)"
+      (edit)="editFood($event)"
+    ></app-food-list>
+  </div>
+</div>

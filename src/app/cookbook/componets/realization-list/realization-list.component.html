@@ -1,0 +1,22 @@
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop.emit($event)" *ngIf="allowEdit">
+  <div class="board" *ngFor="let realization of realizations; index as a" cdkDrag>
+    <div class="text">{{a + 1}}</div>
+    <div class="text">{{realization.content}}</div>
+    <button class="button" mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #appMenu>
+      <button mat-menu-item (click)="delete.emit(realization.realizationId)">Usuń</button>
+      <button mat-menu-item (click)="edit.emit(realization.realizationId)">Edytuj</button>
+    </mat-menu>
+  </div>
+</div>
+
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop.emit($event)" *ngIf="!allowEdit">
+  <div class="boardNoEdit" *ngFor="let realization of realizations; index as a">
+    <div class="text">{{a + 1}}</div>
+    <div class="text">{{realization.content}}</div>
+  </div>
+</div>
+
+

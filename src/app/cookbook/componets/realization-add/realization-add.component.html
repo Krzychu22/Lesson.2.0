@@ -1,0 +1,23 @@
+<div class="board" [formGroup]="model" *ngIf="allowEdit">
+
+  <mat-form-field>
+    <mat-label>Przepis w pojedynczych punktach zapusuj tutaj:</mat-label>
+    <label>
+      <input matInput type="text" [matAutocomplete]="auto" formControlName="content">
+    </label>
+  </mat-form-field>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let content of suggestions$ | async" [value]="content">{{content}}
+    </mat-option>
+  </mat-autocomplete>
+
+  <div class="button">
+    <button mat-raised-button (click)="add.emit(model.value)" [disabled]="model.invalid"
+            *ngIf="!isEditRealization">DODAJ
+    </button>
+    <button mat-raised-button (click)="change.emit(model.value)" [disabled]="model.invalid"
+            *ngIf="isEditRealization">ZMIEŃ
+    </button>
+  </div>
+</div>

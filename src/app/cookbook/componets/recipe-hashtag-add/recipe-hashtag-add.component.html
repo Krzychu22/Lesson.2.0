@@ -1,0 +1,18 @@
+<div class="board" [formGroup]="model" *ngIf="allowEdit">
+
+  <div class="hashtag">
+    <mat-form-field appearance="outline">
+      <mat-label>Hashtag:</mat-label>
+      <input matInput type="text" [matAutocomplete]="auto" formControlName="hashtag">
+    </mat-form-field>
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let hashtag of suggestions$ | async" [value]="hashtag">{{hashtag}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+
+  <div class="button">
+    <button mat-raised-button (click)="add.emit(model.value); model.reset()" [disabled]="model.invalid">DODAJ</button>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 100%;
+  background-color: pink;
+}
+
+.card {
+  min-height: 90vmin;
+  width: 70vmin;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  background-color: hotpink;
+  padding: 1.5vmin;
+  display: grid;
+  grid-template-rows: 15vmin 6.5vmin auto;
+  border-radius: 10px;
+}
+
+.title {
+  background-color: blanchedalmond;
+  padding-left: 10vmin;
+  padding-top: 5vmin;
+  padding-bottom: 3vmin;
+  margin-bottom: 1.5vmin;
+  font-size: 6.5vmin;
+  user-select: none;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 50vmin 10vmin;
+  border-radius: 10px;
+  div {
+    margin-top: 0.8vmin;
+  }
+
+  .mat-icon-button {
+    width: 6vmin;
+    height: 6vmin;
+    margin-left: 2vmin;
+
+  }
+
+  mat-icon {
+    font-size: 6vmin;
+    padding-bottom: .6vmin;
+    margin-left: -3.5vmin;
+  }
+}
+
+.save {
+  display: grid;
+  grid-template-columns: 33.5vmin 15vmin 20vmin;
+
+  mat-form-field {
+  }
+
+  button {
+    top: .4vmin;
+    width: 13vmin;
+    height: 5.5vmin;
+    margin-left: 10px;
+    margin-right: 8px;
+  }
+}
+
+.subtitle {
+  background-color: blanchedalmond;
+  padding-top: 2vmin;
+  padding-left: 2vmin;
+  margin-top: 1vmin;
+  font-size: 3vmin;
+  user-select: none;
+  display: grid;
+  grid-template-columns: 90% auto;
+  grid-gap: 1vmin;
+  border-radius: 10px;
+  &:hover {
+    background-color: darkgray;
+  }
+}
+
+div {
+  button {
+    bottom: 1vmin;
+  }
+}
+.menuAllergies{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: purple;
+  }
+}

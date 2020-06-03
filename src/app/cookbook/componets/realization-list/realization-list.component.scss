@@ -1,0 +1,73 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.text {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 4vmin;
+  padding-bottom: 4vmin;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-left: 2vmin;
+  font-size: 1.85vmin;
+  overflow-wrap: anywhere;
+  text-transform: lowercase;
+
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.button {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.example-list {
+  width: 100%;
+}
+
+.board {
+  cursor: move;
+  width: 100%;
+  background: antiquewhite;
+  margin-bottom: .5vmin;
+  display: grid;
+  grid-template-columns: 35px auto 50px;
+  &:hover {
+    background-color: darkgray;
+  }
+}
+
+.boardNoEdit {
+  width: 100%;
+  background: antiquewhite;
+  margin-bottom: .5vmin;
+  display: grid;
+  grid-template-columns: 35px auto 50px;
+}
+
+.cdk-drag-preview {
+  background-color: darkgray;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 1, 1);
+}
+
+.board:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .board:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.list {
+  display: grid;
+  background-color: pink;
+  width: 25vmax;
+}
+
+.isDone{
+  text-decoration: line-through;
+}

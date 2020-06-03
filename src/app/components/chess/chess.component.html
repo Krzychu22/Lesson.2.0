@@ -1,0 +1,29 @@
+<button mat-raised-button class="reset"(click)="reset()">RESET</button>
+<div class="grid color_{{nextMove}}" >
+  <header>
+    <div *ngFor="let number of letters">{{number}}</div>
+  </header>
+
+  <aside class="sidebar-left">
+    <div *ngFor="let number of numbers">{{number}}</div>
+  </aside>
+
+  <div class="chessboard">
+    <div class="windows" #windows>
+
+      <div *ngFor="let field of fields" [ngClass]="{odd:field,even:!field}"></div>
+    </div>
+    <div *ngFor="let piece of pieces" class="{{piece.color}}-{{piece.type}} piece {{piece.field}}" [cdkDragData]="piece" cdkDragBoundary=".chessboard" cdkDrag
+         (cdkDragEnded)="pieceDropped($event)"
+    ></div>
+  </div>
+  <aside class="sidebar-right">
+    <div *ngFor="let number of numbers">{{number}}</div>
+  </aside>
+
+  <footer>
+    <div *ngFor="let number of letters">{{number}}</div>
+  </footer>
+</div>
+<ng-template #check>Szach</ng-template>
+<ng-template #checkmate>Szach Mat</ng-template>

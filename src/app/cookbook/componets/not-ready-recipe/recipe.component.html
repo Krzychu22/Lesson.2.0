@@ -1,0 +1,97 @@
+<div class="card" [formGroup]="modelFood">
+  <div class="title">
+    <div>{{name$ | async}}</div>
+    <button mat-icon-button [routerLink]="['/Meal', mealId$ | async]">
+      <mat-icon>reply</mat-icon>
+    </button>
+  </div>
+  <div class="choice">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Ilość:</mat-label>
+        <label>
+          <input type="number" min="1" matInput formControlName="amount" (keyup.enter)="addProduct()" *ngIf="!isEditFood">
+          <input type="number" min="1" matInput formControlName="amount" (keyup.enter)="changeProduct()" *ngIf="isEditFood">
+        </label>
+        <span matSuffix>{{unit$ | async}}</span>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Rodzaj żywności:</mat-label>
+        <mat-select formControlName="foodId" (keyup.enter)="addProduct()" *ngIf="!isEditFood">
+          <mat-option>Nic</mat-option>
+          <mat-option *ngFor="let food of foods$ | async;" [value]="food.foodId" >{{food.name}}</mat-option>
+        </mat-select>
+        <mat-select formControlName="foodId" (keyup.enter)="changeProduct()" *ngIf="isEditFood">
+          <mat-option>Nic</mat-option>
+          <mat-option *ngFor="let food of foods$ | async;" [value]="food.foodId" >{{food.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button (click)="addProduct()" [disabled]="modelFood.invalid" *ngIf="!isEditFood">DODAJ</button>
+      <button mat-raised-button (click)="changeProduct()" [disabled]="modelFood.invalid" *ngIf="isEditFood">ZMIEŃ
+      </button>
+    </div>
+    <div>
+      <button mat-raised-button [routerLink]="['/Foods']" [queryParams]="{recipeId: recipeId$ | async}">NOWY PRODUKT
+      </button>
+    </div>
+  </div>
+  <div>
+    <div class="product" *ngFor="let product of products$ | async; index as a">
+      <div>{{a + 1}}</div>
+      <a>{{(product.foodId | food)?.name}}</a>
+      <div> {{product.amount}} {{(product.foodId | food)?.unit}}</div>
+      <div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #appMenu>
+            <button mat-menu-item (click)="deleteProduct(product.foodId)">Usuń</button>
+            <button mat-menu-item (click)="editProduct(product.foodId)">Edytuj</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="recipe" [formGroup]="modelRealization">
+      <mat-form-field class="example-full-width">
+        <mat-label>Przepis w pojedynczych punktach zapusuj tutaj:</mat-label>
+        <label>
+          <input matInput formControlName="content" (keyup.enter)="addRealization()" *ngIf="!isEditRealization">
+          <input matInput formControlName="content" (keyup.enter)="addRealization()" *ngIf="!isEditRealization">
+        </label>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button (click)="addRealization()" [disabled]="modelRealization.invalid"
+                *ngIf="!isEditRealization">DODAJ
+        </button>
+        <button mat-raised-button (click)="changeRealization()" [disabled]="modelRealization.invalid"
+                *ngIf="isEditRealization">ZMIEŃ
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="dropRealization($event)">
+      <div class="example-box" *ngFor="let realization of realizations$ | async; index as i" cdkDrag>
+        <div>{{i + 1}}.{{realization.content}}
+        </div>
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="appMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #appMenu>
+            <button mat-menu-item (click)="deleteRealization(realization.realizationId)">Usuń</button>
+            <button mat-menu-item (click)="editRealization(realization.realizationId)">Edytuj</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="save" mat-raised-button [routerLink]="['/ReadyRecipe',recipeId$ | async]">ZACZNUJ GOTOWAĆ</button>
+</div>

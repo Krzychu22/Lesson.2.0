@@ -1,0 +1,10 @@
+<div [formGroup]="model">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Szukaj</mat-label>
+    <input matInput type="text" [matAutocomplete]="auto" [matAutocompleteDisabled]="!hasHints" formControlName="query" />
+  </mat-form-field>
+
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="pickedRecipe.emit($event.option.value)">
+    <mat-option *ngFor="let option of hints$ | async" [value]="option.recipeId">{{option.name}}</mat-option>
+  </mat-autocomplete>

@@ -1,0 +1,142 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-width: 100%;
+  background-image: linear-gradient(black 20%, orchid);
+  //@media (max-width: 500px){
+  //  background: green;
+  //}
+}
+
+div {
+  min-height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+mat-form-field {
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: antiquewhite;
+  border-radius: 10px;
+  font-size: 3vmin;
+  grid-area: header;
+  margin-bottom: 1vmin;
+}
+
+app-recipe-hashtag-add {
+  grid-area: recipeHashatgAdd;
+}
+
+app-recipe-hashtag-list {
+  grid-area: recipeHashatgList;
+}
+
+app-product-add {
+  grid-area: addProduct;
+}
+
+app-products-list {
+  grid-area: listProduct;
+  align-items: start;
+}
+
+app-realizaton-add {
+  grid-area: addRealization;
+}
+
+app-realization-list {
+  grid-area: listRealization;
+  align-items: start;
+}
+
+.buttonSave {
+  width: 62%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-right: 19%;
+  margin-left: 19%;
+  margin-bottom: 1vmin;
+  font-size: 3vmin;
+  height: 7vmin;
+  position: fixed;
+  bottom: 0;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 15% 15% 30%;
+  grid-template-rows: auto;
+  column-gap: 2vmin;
+  row-gap: 1vmin;
+  margin-bottom: 9vmin;
+  grid-template-areas: "header header header" "recipeHashatgAdd recipeHashatgList recipeHashatgList" "addProduct addProduct addRealization" "listProduct listProduct listRealization";
+}
+
+.titleFoodAdd{
+  background-image: linear-gradient(antiquewhite 90%, orchid);
+  border-radius: 10px 0 0 0;
+}
+
+.overlayFood {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlayFood:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popupFood {
+  margin-top: 5vmin;
+  margin-bottom: 5vmin;
+  height: 90vmin;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(orchid 20%, black);
+  border-radius: 10px;
+  transition: all 1s ease-in-out;
+  overflow-y: scroll;
+}
+
+.popupFood .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+::-webkit-scrollbar {
+  max-height: 100px;
+  width: 22px;
+  background-image: linear-gradient(orchid 20%, black);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+}
+

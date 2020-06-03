@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 100%;
+  background: antiquewhite;
+  border-radius: 10px 10px 0 0;
+}
+
+.board {
+  display: flex;
+  width: 96%;
+}
+
+.unit, .product{
+  width: 40%;
+
+}
+
+.button{
+  width: 20%;
+}
+
+mat-form-field {
+  width: 95%;
+  font-size: 1.6vmin;
+  height: 6vmin;
+}
+
+button {
+  width: 100%;
+  margin-top: 3px;
+  font-size: 2vmin;
+  text-align: center;
+  height: 6vmin;
+}
+

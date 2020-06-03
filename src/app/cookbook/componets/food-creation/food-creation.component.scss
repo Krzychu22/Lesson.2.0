@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-width: 100%;
+  div {
+    min-height: 100%;
+    min-width: 100%;
+    justify-content: center;
+    align-items: center;
+
+  }
+}
+
+
+app-food-add {
+  grid-area: addFood;
+}
+
+app-food-list {
+  grid-area: listFood;
+  align-items: start;
+}
+
+
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  grid-template-rows: auto;
+  column-gap: 2vmin;
+  row-gap: 1vmin;
+  margin-bottom: 2vmin;
+  grid-template-areas:
+    "addFood addFood"
+    "listFood listFood";
+}
+

@@ -1,0 +1,6 @@
+<div>
+  <app-shopping-list taskType="jedzenie"></app-shopping-list>
+  <app-shopping-list [units]="['zł','$']" taskType="picie"></app-shopping-list>
+  <app-shopping-list [units]="['zł','$']" taskType="desery"></app-shopping-list>
+</div>
+<h1>Plnujesz kupić: {{count$ | async}} rzeczy</h1>

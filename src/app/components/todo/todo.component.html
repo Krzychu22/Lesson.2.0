@@ -1,0 +1,21 @@
+<table class="list">
+  <button mat-raised-button (click)="addTask()" [disabled]="model.invalid">DODAJ</button>
+  <div class="title">
+    <mat-form-field appearance="fill" [formGroup]="model">
+      <mat-label>Pisz tu:</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <p>
+      <mat-checkbox [(ngModel)]="showDone">Pokaż wykonane</mat-checkbox>
+    </p>
+  </div>
+  <div class="tasks">
+    <mat-list>
+      <mat-list-item class="task" *ngFor="let task of filteredTasks$ | async; index as i" [ngClass]="{isDone: task.isDone}">
+        <mat-checkbox [checked]="task.isDone" (change)="onTaskDone(task.taskId)">{{i + 1}}
+          . {{task.title}}</mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</table>
+

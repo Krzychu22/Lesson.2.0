@@ -1,0 +1,35 @@
+ <div class="board" [formGroup]="model" *ngIf="allowEdit">
+
+    <div class="unit">
+      <mat-form-field appearance="outline">
+        <mat-label>Ilość:</mat-label>
+        <label>
+          <input type="number" min="1" matInput formControlName="amount">
+        </label>
+        <span matSuffix>{{unit}}</span>
+        <mat-error *ngIf="model.controls.amount.touched && model.controls.amount.errors?.required">Musi być jakaś ilość</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="product">
+      <mat-form-field appearance="outline">
+        <mat-label>Produkt:</mat-label>
+        <mat-select formControlName="foodId">
+          <mat-option>Nic</mat-option>
+          <mat-option *ngFor="let food of foods" [value]="food.foodId">{{food.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="model.controls.foodId.touched && model.controls.foodId.errors?.required">Brakuje produktu? Dodaj nowy do lodówki</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="button">
+      <button mat-raised-button (click)="add.emit(model.value); model.reset()" [disabled]="model.invalid"
+              *ngIf="!isEditFood">DODAJ
+      </button>
+      <button mat-raised-button (click)="change.emit(model.value); model.reset()" [disabled]="model.invalid"
+              *ngIf="isEditFood">ZMIEŃ
+      </button>
+    </div>
+
+  </div>
+
