@@ -99,6 +99,22 @@ export class FoodsFakeService extends FoodsService {
     amount: 56,
     foodId: 'd1',
     recipeId: 'd2',
-  }]);
+  },{
+    amount: 8,
+    foodId: 'a1',
+    recipeId: 'a2',
+  }, {
+    amount: 70,
+    foodId: 'b1',
+    recipeId: 'b2',
+  }, {
+    amount: 67,
+    foodId: 'c1',
+    recipeId: 'c2',
+  }, {
+    amount: 56,
+    foodId: 'd1',
+    recipeId: 'd2',
+  },]);
 
 }

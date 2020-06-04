@@ -67,14 +67,15 @@
             </a>
           </div>
         </div>
-
         <div class="box">
           <mat-horizontal-stepper>
             <mat-step>
-              <div class="containerRealization">
+              <div class="containerProduct">
+                <div></div>
+                <div class="title">Przygotuj:</div>
+                <div></div>
                 <a> </a>
-                <div>
-                  <div class="title">Przygotuj:</div>
+                <div class="productList">
                   <app-products-list
                     [allowEdit]="!allowEdit"
                     [products]="products$ | async"
@@ -88,13 +89,13 @@
             </mat-step>
             <mat-step *ngFor="let realization of realization$ | async index as i">
               <div class="containerRealization">
+                <div></div>
+                <div class="title">Pora na magie:</div>
+                <div></div>
                 <button mat-icon-button matStepperPrevious>
                   <mat-icon>keyboard_arrow_left</mat-icon>
                 </button>
-                <div>
-                  <div class="title">Pora ma magie:</div>
-                  <div>{{i+1}} {{realization.content}}</div>
-                </div>
+                  <div class="content">{{i + 1}}. {{realization.content}}</div>
                 <button mat-icon-button matStepperNext>
                   <mat-icon>keyboard_arrow_right</mat-icon>
                 </button>

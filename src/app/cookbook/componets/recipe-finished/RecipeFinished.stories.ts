@@ -24,6 +24,7 @@ import {RecipeFinishedComponent} from './recipe-finished.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
 
 const actions = {
   edit: action('Recipe edit') as any,
@@ -33,7 +34,7 @@ const decoration: NgModule = {
 
   declarations: [RecipeFinishedComponent, ProductsListComponent, RealizationListComponent, RecipeHashtagListComponent, FoodPipe],
   imports: [MatSelectModule, FormsModule, MatInputModule, ReactiveFormsModule, MatFormFieldModule, MatAutocompleteModule,
-    BrowserAnimationsModule, MatIconModule, MatButtonModule, MatMenuModule, DragDropModule, MatDialogModule, MatStepperModule],
+    BrowserAnimationsModule, MatIconModule, MatButtonModule, MatMenuModule, DragDropModule, MatDialogModule, MatStepperModule, MatTabsModule],
   providers: [
     {
       provide: FoodsService,
