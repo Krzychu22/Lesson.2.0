@@ -57,10 +57,8 @@ body {
 }
 
 .titleAllPage {
-  min-width: 100%;
+  width: 100%;
   height: 15vmin;
-  justify-content: center;
-  align-items: center;
   background-image: linear-gradient(antiquewhite 90%, black);
   font-size: 7vmin;
   padding-top: 3vmin;
@@ -68,8 +66,7 @@ body {
   margin-bottom: 4vmin;
   overflow-wrap: anywhere;
   display: grid;
-  grid-template-columns: 13vmin 78% 13vmin;
-  border-radius: 10px 10px 0 0;
+  grid-template-columns: 11vmin 80% 11vmin;
 
   .title {
     height: 100%;
