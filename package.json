@@ -26,6 +26,7 @@
     "chess.js": "^0.10.3",
     "cuid": "^2.1.8",
     "fuse.js": "^5.2.3",
+    "gsap": "file:gsap/gsap-bonus.tgz",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

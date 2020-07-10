@@ -1,0 +1,37 @@
+.box {
+  display: flex;
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+  min-width: auto;
+  min-height: auto;
+}
+
+img {
+  user-select: none;
+  pointer-events: none;
+  max-width: 100%;
+  max-height:100%;
+}
+
+.ball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 5px solid dimgrey;
+}
+
+.window {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 12px 10px 10px 10px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  white-space:nowrap;
+  pointer-events: none;
+}

@@ -34,16 +34,13 @@ import { RecipeHashtagListComponent } from './componets/recipe-hashtag-list/reci
 import { FoodCreationComponent } from './componets/food-creation/food-creation.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RecipeFinishedComponent } from './componets/recipe-finished/recipe-finished.component';
+import { AllRecipeListComponent } from './componets/all-recipe-list/all-recipe-list.component';
 
 
 @NgModule({
   declarations: [AllCulinaryRecipesComponent, MealComponent, RecipeComponent, FoodsComponent, ReadyRecipeComponent, FoodPipe, RecipeListComponent, RecipeSearchComponent,
     ListWithSearchComponent, ProductsListComponent, ProductAddComponent, RealizationAddComponent, RealizationListComponent, FoodAddComponent, FoodListComponent,
-    RecipeCreationComponent,
-    RecipeHashtagAddComponent,
-    RecipeHashtagListComponent,
-    FoodCreationComponent,
-    RecipeFinishedComponent],
+    RecipeCreationComponent, RecipeHashtagAddComponent, RecipeHashtagListComponent, FoodCreationComponent, RecipeFinishedComponent, AllRecipeListComponent],
   exports: [
     ListWithSearchComponent
   ],

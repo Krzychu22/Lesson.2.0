@@ -1,20 +1,15 @@
-<h1>{{title}}</h1>
-
 <ol>
   <li *ngFor="let recipe of recipes">
     {{recipe.name}}
+    <button *ngIf="!like" mat-icon-button (click)="LikeDislike.emit(recipe.recipeId)">
+      <mat-icon>star_border</mat-icon>
+    </button>
+    <button *ngIf="like" mat-icon-button (click)="LikeDislike.emit(recipe.recipeId)">
+      <mat-icon>star</mat-icon>
+    </button>
     <button mat-raised-button *ngIf="isPicker" (click)="picked.emit(recipe.recipeId)">Wybierz</button>
     <button mat-raised-button *ngIf="isCookInit" (click)="picked.emit(recipe.recipeId)">GOTUJ</button>
-    <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="allowEdit">
-
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #appMenu>
-      <button mat-menu-item (click)="delete.emit(recipe.recipeId)">Usuń</button>
-      <button mat-menu-item (click)="edit.emit(recipe.recipeId)">Edytuj</button>
-    </mat-menu>
   </li>
-
 </ol>
 
 <h1 *ngIf="!recipes.length && !isSearch">Nie masz jeszcze przepisów</h1>

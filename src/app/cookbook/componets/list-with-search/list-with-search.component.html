@@ -10,4 +10,5 @@
   [recipes]="searchResult$ | async"
   [isSearch]="true"
   (picked)="picked.emit($event)"
+  (LikeDislike)="LikeDislike.emit($event)"
 ></app-recipe-list>

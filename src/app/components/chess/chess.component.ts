@@ -51,7 +51,7 @@ export class ChessComponent implements OnInit {
     }
   }
 
-  drawchessboard() {
+  drawChessBoard() {
     this.pieces = [];
     const current = (this.game.board());
     for (let row = 0; row <= 7; row++) {
@@ -75,7 +75,7 @@ export class ChessComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => this.drawchessboard(), 0);
+    setTimeout(() => this.drawChessBoard(), 0);
     // this.drawchessboard();
 
   }
@@ -93,7 +93,7 @@ export class ChessComponent implements OnInit {
     if (event.source.data.field !== to && this.game.move({from: event.source.data.field, to})) {
       // const piece = this.pieces.find(piece => piece === event.source.data);
       // piece.field = `${column}${row}`;
-      this.drawchessboard();
+      this.drawChessBoard();
       localStorage.state = this.game.fen();
     }
 
@@ -109,7 +109,7 @@ export class ChessComponent implements OnInit {
 
   reset() {
     this.game.reset();
-    this.drawchessboard();
+    this.drawChessBoard();
     localStorage.removeItem('state');
   }
 

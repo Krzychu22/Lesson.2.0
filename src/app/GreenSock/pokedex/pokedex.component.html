@@ -1,0 +1,39 @@
+<div class="page" #page>
+  <!--  wybór pokemona-->
+  <div class="container" #container>
+    <div class="box" *ngFor="let pokemon of pokemons$ | async;index as i" (click)="fullScreen($event.currentTarget)"
+         (pointerenter)="animatePokemon($event.target)"
+         (pointerleave)="reverseAnimation($event.target)">
+      <div class="pokemon1"><img
+        src="{{pokemon.pokemon1}}">
+      </div>
+      <div class="pokemon2"><img
+        src="{{pokemon.pokemon2}}">
+      </div>
+      <div class="pokemon3"><img
+        src="{{pokemon.pokemon3}}">
+      </div>
+      <span class="text text3 {{pokemon.typ}}">{{pokemon.name3}}</span>
+      <span class="text text2 {{pokemon.typ}}">{{pokemon.name2}}</span>
+      <span class="text text1 {{pokemon.typ}}">{{pokemon.name1}}</span>
+      <div class="information">{{pokemon.information}}
+        <div class="typ {{pokemon.typ}}">{{pokemon.typ}}</div>
+      </div>
+    </div>
+  </div>
+  <!--  strona początkowa-->
+  <div class="curtain left">
+    <div class="pokeball bottom">
+      <div class="ball1"></div>
+      <div class="ball2"></div>
+    </div>
+  </div>
+  <div class="curtain right">
+    <div class="pokeball top">
+      <div class="ball1"></div>
+      <div class="ball2"></div>
+    </div>
+  </div>
+  <div class="ball3 R"></div>
+  <div class="ball4 R" (click)="open()"></div>
+</div>

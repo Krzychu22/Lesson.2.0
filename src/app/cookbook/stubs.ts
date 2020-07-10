@@ -6,6 +6,7 @@ export const recipeListStub: Array<RecipeInterface> = [{
   mealId: 'b',
   realization: [],
   components: [],
+  like: false,
 },
   {
     name: 'Drugi',
@@ -13,6 +14,7 @@ export const recipeListStub: Array<RecipeInterface> = [{
     mealId: 'b',
     realization: [],
     components: [],
+    like: true,
 
   }, {
     name: 'trzeci',
@@ -20,6 +22,7 @@ export const recipeListStub: Array<RecipeInterface> = [{
     mealId: 'b',
     realization: [],
     components: [],
+    like: false,
   }];
 export const productsListStub: Array<FoodInRecipe> = [{
   amount: 10,

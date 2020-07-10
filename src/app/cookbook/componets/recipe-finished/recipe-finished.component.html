@@ -70,35 +70,46 @@
         <div class="box">
           <mat-horizontal-stepper>
             <mat-step>
-              <div class="containerProduct">
-                <div></div>
-                <div class="title">Przygotuj:</div>
-                <div></div>
+              <div class="smallBox">
                 <a> </a>
-                <div class="productList">
-                  <app-products-list
-                    [allowEdit]="!allowEdit"
-                    [products]="products$ | async"
-                    [foods]="foods$ | async"
-                  ></app-products-list>
+                <div class="containerRealization">
+                  <div class="title">Przygotuj:</div>
+                  <div class="productList">
+                    <app-products-list
+                      [allowEdit]="!allowEdit"
+                      [products]="products$ | async"
+                      [foods]="foods$ | async"
+                    ></app-products-list>
+                  </div>
                 </div>
-                <button mat-icon-button matStepperNext>
+                <button matStepperNext>
                   <mat-icon>keyboard_arrow_right</mat-icon>
                 </button>
               </div>
             </mat-step>
             <mat-step *ngFor="let realization of realization$ | async index as i">
-              <div class="containerRealization">
-                <div></div>
-                <div class="title">Pora na magie:</div>
-                <div></div>
-                <button mat-icon-button matStepperPrevious>
+              <div class="smallBox">
+                <button matStepperPrevious>
                   <mat-icon>keyboard_arrow_left</mat-icon>
                 </button>
+                <div class="containerRealization">
+                  <div class="title">Pora na magie:</div>
                   <div class="content">{{i + 1}}. {{realization.content}}</div>
-                <button mat-icon-button matStepperNext>
+                </div>
+                <button matStepperNext>
                   <mat-icon>keyboard_arrow_right</mat-icon>
                 </button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <div class="smallBox">
+                <button matStepperPrevious>
+                  <mat-icon>keyboard_arrow_left</mat-icon>
+                </button>
+                <div class="containerRealization">
+                  <div class="title"></div>
+                  <div class="content lastContent">SMACZNEGO :)</div>
+                </div>
               </div>
             </mat-step>
           </mat-horizontal-stepper>

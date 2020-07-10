@@ -1,0 +1,9 @@
+<div class="box" (click)="clickPoint($event)">
+<div class="ball" #ball [ngStyle]="{'top.px':this.y,'left.px':this.x,'transition': transition}" cdkDragBoundary=".box" cdkDrag *ngIf="selectedPoint" (cdkDragStarted)="startDrag()"></div>
+  <h3 class="window" *ngIf="!selectedPoint">KLIKNIJ ABY USTAWIĆ PUNKT CENTRALNY</h3>
+
+  <img src="
+https://images.unsplash.com/photo-1592887714077-1c2ca9cdcf48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
+"    alt="photo">
+
+</div>

@@ -52,10 +52,10 @@ const decoration: NgModule = {
   ]
 };
 
-storiesOf('CookBook / One recipe', module)
+storiesOf('CookBook / Full page', module)
   .addDecorator(moduleMetadata(decoration))
   .addDecorator(withKnobs)
-  .add('Edit', () => ({
+  .add('Recipe list', () => ({
     props: {
       products: productsListStub,
       foods: foodsListStub,

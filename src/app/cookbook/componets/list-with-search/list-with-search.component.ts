@@ -15,7 +15,7 @@ export class ListWithSearchComponent implements OnInit {
     this._recipes = recipes;
     this.searchResult$.next(recipes);
   }
-
+@Output() LikeDislike = new EventEmitter();
 
   get recipes() {
     return this._recipes;

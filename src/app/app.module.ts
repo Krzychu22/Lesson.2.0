@@ -27,6 +27,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {RxjsComponent} from './components/rxjs/rxjs.component';
 import {CookbookModule} from './cookbook/cookbook.module';
 import { RecipeListViewComponent } from './views/recipe-list-view/recipe-list-view.component';
+import { SelectPhotoPositionComponent } from './Zalamo/select-photo-position/select-photo-position.component';
+import { ScreenDevicesComponent } from './Zalamo/screen-devices/screen-devices.component';
+import { PhotoClickPointComponent } from './Zalamo/photo-click-point/photo-click-point.component';
+import { SomethingComponent } from './GreenSock/something/something.component';
+import {GreenSockModule} from './GreenSock/greenSock.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,10 @@ import { RecipeListViewComponent } from './views/recipe-list-view/recipe-list-vi
     ListTodoComponent,
     RxjsComponent,
     RecipeListViewComponent,
+    SelectPhotoPositionComponent,
+    ScreenDevicesComponent,
+    PhotoClickPointComponent,
+    SomethingComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,11 +100,14 @@ import { RecipeListViewComponent } from './views/recipe-list-view/recipe-list-vi
       }, {
         component: RxjsComponent,
         path: 'rxjs'
+      }, {
+        component: SelectPhotoPositionComponent,
+        path: 'SelectPhotoPosition'
       }
     ]),
-    MatDialogModule, BrowserAnimationsModule, ReactiveFormsModule,
-
-    FormsModule, DragDropModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatListModule, MatIconModule, MatMenuModule, CookbookModule
+    MatDialogModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule, DragDropModule,
+    MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule,
+    MatListModule, MatIconModule, MatMenuModule, CookbookModule, GreenSockModule
   ],
   providers: [],
   bootstrap: [AppComponent]

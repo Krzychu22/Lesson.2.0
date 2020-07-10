@@ -22,7 +22,7 @@ const actions = {
 } as Partial<ListWithSearchComponent>;
 const decoration = {
 
-  declarations: [ListWithSearchComponent, RecipeSearchComponent, RecipeListComponent],
+  declarations: [ListWithSearchComponent, RecipeSearchComponent, RecipeListComponent, ListWithSearchComponent],
   imports: [FormsModule, MatInputModule, ReactiveFormsModule, MatFormFieldModule, MatAutocompleteModule, BrowserAnimationsModule, MatIconModule, MatButtonModule, MatMenuModule]
 };
 

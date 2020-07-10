@@ -14,6 +14,7 @@ export interface RecipeInterface {
   realization: Array<RecipeStep>;
   components: Array<FoodInRecipe>;
   recipeId: string;
+  like: boolean;
 }
 
 export interface RecipeStep {

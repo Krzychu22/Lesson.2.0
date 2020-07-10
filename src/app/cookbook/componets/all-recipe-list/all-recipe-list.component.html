@@ -1,0 +1,24 @@
+<div>
+  <div class="titleAllPage">
+    <div class="button">
+      <a mat-icon-button (click)="back.emit()">
+        <mat-icon>arrow_back
+          <span class="tooltipText">COFNIJ</span>
+        </mat-icon>
+      </a>
+    </div>
+
+    <div class="title">Przepisy</div>
+
+    <div class="button">
+      <a>
+      </a>
+    </div>
+  </div>
+
+<app-list-with-search
+  [recipes]="recipes$ | async"
+  (picked)="picked.emit($event)"
+  (LikeDislike)="LikeDislike.emit($event)"
+></app-list-with-search>
+</div>
