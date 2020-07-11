@@ -7,7 +7,7 @@ import { ScrollPageComponent } from './scroll-page/scroll-page.component';
 
 @NgModule({
   declarations: [SomethingComponent, PokedexComponent, ScrollPageComponent],
-  exports: [SomethingComponent, PokedexComponent],
+  exports: [SomethingComponent, PokedexComponent, ScrollPageComponent],
   imports: [
     MatButtonModule,
     CommonModule

@@ -2,7 +2,7 @@ import {moduleMetadata, storiesOf} from '@storybook/angular';
 import {SomethingComponent} from './something/something.component';
 import {GreenSockModule} from './greenSock.module';
 import {PokedexComponent} from './pokedex/pokedex.component';
-import {object} from '@storybook/addon-knobs';
+import {ScrollPageComponent} from './scroll-page/scroll-page.component';
 
 
 const decoration = {
@@ -26,4 +26,11 @@ storiesOf('GreenSock / Page', module)
     template: `<app-pokedex></app-pokedex>`,
     props: {} as Partial<PokedexComponent>,
     component: PokedexComponent
+  }));
+storiesOf('GreenSock / Page', module)
+  .addDecorator(moduleMetadata(decoration))
+  .add('Scroll', () => ({
+    template: `<app-scroll-page></app-scroll-page>`,
+    props: {} as Partial<ScrollPageComponent>,
+    component: ScrollPageComponent
   }));
