@@ -26,9 +26,6 @@ export class PokedexComponent implements OnInit {
   @ViewChild('page', {
     static: true,
   }) page: ElementRef<HTMLElement>;
-  @ViewChild('container', {
-    static: true,
-  }) container: ElementRef<HTMLElement>;
 
   tl = gsap.timeline({});
   tlC = gsap.timeline();

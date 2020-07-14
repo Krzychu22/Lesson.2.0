@@ -8,15 +8,33 @@
       <div class="line2"></div>
     </div>
   </div>
-  <div class="panel page2"><div class="button" (mouseenter)="animationBall()"></div>
+  <div class="panel page2">
+    <div class="clonePage2" (click)="resetWindow()"></div>
+    <div class="button button{{button.number}}" *ngFor="let button of buttons$ | async;index as i"
+         (pointerenter)="animationBall($event.target)"
+         (pointerleave)="onAnimationBall($event.target)"
+         (click)="openWindow($event.target)">
+      <div class="window">{{button.text}}
+      </div>
+    </div>
   </div>
   <div class="panel page3">
-    <div class="box"></div>
   </div>
   <div class="panel page4">
-    <div class="box"></div>
+    <div class="boxXL">
+    </div>
+    <div class="box box1">
+      <div class="text text1">Coś się napewno stanie</div>
+      <div class="rectangle"></div>
+      <div class="square"></div>
+    </div>
+    <div class="box box2">
+      <div class="text text2">Poczekaj i kliknij środek</div>
+      <div class="rectangle"></div>
+      <div class="square"></div>
+    </div>
+    <div class="logo"></div>
   </div>
   <div class="panel page5">
-    <div class="box"></div>
   </div>
 </div>

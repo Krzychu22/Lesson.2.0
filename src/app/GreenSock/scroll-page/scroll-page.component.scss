@@ -67,7 +67,7 @@
 
     .line2 {
       position: absolute;
-      bottom: -1.5%;
+      bottom: -2%;
       left: 48.7%;
       width: .4vw;
       border: solid 2px black;
@@ -80,33 +80,146 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+
+  .clonePage2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   .button {
     position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 50%;
     border: solid 5px #e31d3c;
+    cursor: pointer;
+
+    .window {
+      //visibility: hidden;
+      transform: scale(0);
+      position: relative;
+      width: 300px;
+      cursor: auto;
+      height: 150px;
+      border-radius: 20px 20px 20px 0;
+      //border: solid 2px #555555;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin-left: 50px;
+      margin-top: -150px;
+    }
+  }
+
+  .button1 {
     top: 40%;
     right: 30%;
-    cursor: pointer;
+  }
+
+  .button2 {
+    bottom: 28%;
+    left: 33%;
+
+    .window {
+      border-radius: 0 20px 20px 20px;
+      margin-left: 50px;
+      margin-top: 50px;
+    }
+  }
+
+  .button3 {
+    top: 28%;
+    left: 23%;
+  }
+
+  .button4 {
+    bottom: 43%;
+    right: 45%;
+
+    .window {
+      border-radius: 0 20px 20px 20px;
+      margin-left: 50px;
+      margin-top: 50px;
+    }
   }
 }
 
 .page3 {
   background-color: orange;
+  position: relative;
+
 }
 
 .page4 {
-  background-color: aqua;
+  background-color: orange;
+  position: relative;
+
+  .box {
+    z-index: 2;
+    width: 20vw;
+    height: 6vw;
+    background-color: #333333;
+    border-radius: 20px;
+    position: absolute;
+    .square {
+      position: absolute;
+      top: 1.5vw;
+      left: 1vw;
+      width: 3vw;
+      height: 3vw;
+      background-color: #e31d3c;
+    }
+    .rectangle {
+      position: absolute;
+      top: 1.5vw;
+      left: 1vw;
+      width: 15.8vw;
+      height: 3vw;
+      background-color: #333333;
+    }
+    .text {
+      margin-left: 1vw;
+      margin-top: 2.2vw;
+      color: white;
+      font-size: 1.3vw;
+      visibility: visible;
+    }
+  }
+
+  .box1 {
+    top: 200px;
+    left: 5vw;
+  }
+
+  .box2 {
+    bottom: 200px;
+    right: 5vw;
+  }
+
+  .boxXL {
+    z-index: 1;
+    width: 80vw;
+    height: 80vh;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+  }
+
+  //.logo {
+  //  z-index: 3;
+  //  width: 70vw;
+  //  height: 70vh;
+  //  top: 15vh;
+  //  left: 15vw;
+  //  position: absolute;
+  //  background-color: #e31d3c;
+  //}
 }
 
 .page5 {
   background-color: darkblue;
-}
-
-.box {
-  width: 700px;
-  height: 700px;
-  background-color: #333333;
-  border: solid 3px greenyellow;
+  position: relative;
 }
