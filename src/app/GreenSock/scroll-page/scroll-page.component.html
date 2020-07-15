@@ -29,11 +29,17 @@
       <div class="square"></div>
     </div>
     <div class="box box2">
-      <div class="text text2">Poczekaj i kliknij środek</div>
+      <div class="text text2">Poczekaj i kliknij armate</div>
       <div class="rectangle"></div>
       <div class="square"></div>
     </div>
-    <div class="logo"></div>
+    <div class="windowBoom">
+      <img (click)="fireR()" class="cannon cannonR" src="assets/scroll.page/cannon.svg">
+      <div class="heart heartR" *ngFor="let heart of hearts"></div>
+      <img (click)="fireL()" class="cannon cannonL" src="assets/scroll.page/cannon.svg">
+      <div class="heart heartL" *ngFor="let heart of hearts"></div>
+      <div class="boom">WIELKIE BOOM!!!</div>
+    </div>
   </div>
   <div class="panel page5">
   </div>

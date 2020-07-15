@@ -1,12 +1,13 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 import {gsap} from 'gsap';
 import {ScrollToPlugin} from 'gsap/ScrollToPlugin';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {GSDevTools} from 'gsap/GSDevTools';
+import {Physics2DPlugin} from 'gsap/Physics2DPlugin';
 import {SplitText} from 'gsap/SplitText';
-import {BehaviorSubject} from 'rxjs';
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger, GSDevTools, SplitText);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger, GSDevTools, Physics2DPlugin, SplitText);
 
 interface buttons {
   number: number;
@@ -28,6 +29,8 @@ export class ScrollPageComponent implements OnInit {
   window = false;
   lastButton = [];
   lastWindow = [];
+  hearts = [];
+  heartsR = [];
   fullWindow = false;
   tl = gsap.timeline();
   buttons$ = new BehaviorSubject<Array<buttons>>([{
@@ -77,7 +80,7 @@ export class ScrollPageComponent implements OnInit {
     const split = new SplitText(block, {type: 'chars'});
     const chars = split.chars;
 
-
+    // console.log(chars);
     for (let i = 0; i <= split.chars.length; i++) {
       function random(min, max) {
         return (Math.random() * (max - min)) + min;
@@ -143,11 +146,11 @@ export class ScrollPageComponent implements OnInit {
         rotation: 380,
         duration: 1,
       }, '<')
-  .to(rectangle, {
-    width: '0',
-duration: 1,
-    x: '15.8vw',
-    }, '<');
+      .to(rectangle, {
+        width: '0',
+        duration: 1,
+        x: '15.8vw',
+      }, '<');
     ScrollTrigger.create({
       animation: tlBox,
       trigger: page3,
@@ -194,6 +197,11 @@ duration: 1,
           anticipatePin: 1
         },
       });
+    }
+
+
+    for (let i = 0; i < 100; i++) {
+      this.hearts.push(i);
     }
   }
 
@@ -261,4 +269,41 @@ duration: 1,
     }
   }
 
+  fireR() {
+    const heart = this.page.nativeElement.querySelectorAll('.heartR');
+    for (let i = 0; i <= heart.length; i++) {
+      gsap.set(heart[i], {
+        x: 0, y: 0,
+      });
+      gsap.to(heart[i], {
+        physics2D: {
+          velocity: Math.random() * 200 + 400,
+          angle: -150,
+          gravity: Math.random() * 80 + 400,
+        },
+        scale: Math.random() + .2,
+        duration: 2.5,
+        delay: Math.random(),
+      });
+    }
+  }
+
+  fireL() {
+    const heart = this.page.nativeElement.querySelectorAll('.heartL');
+    for (let i = 0; i <= heart.length; i++) {
+      gsap.set(heart[i], {
+        x: 0, y: 0,
+      });
+      gsap.to(heart[i], {
+        physics2D: {
+          velocity: Math.random() * 200 + 400,
+          angle: -30,
+          gravity: Math.random() * 80 + 400,
+        },
+        scale: Math.random() + .2,
+        duration: 2.5,
+        delay: Math.random(),
+      });
+    }
+  }
 }
