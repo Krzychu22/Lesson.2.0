@@ -12,13 +12,22 @@
     <div class="clonePage2" (click)="resetWindow()"></div>
     <div class="button button{{button.number}}" *ngFor="let button of buttons$ | async;index as i"
          (pointerenter)="animationBall($event.target)"
-         (pointerleave)="onAnimationBall($event.target)"
+         (pointerleave)="onAnimation($event.target)"
          (click)="openWindow($event.target)">
       <div class="window">{{button.text}}
       </div>
     </div>
   </div>
   <div class="panel page3">
+    <div class="scrolling">
+      <mat-form-field appearance="outline">
+        <mat-label>Liczba:</mat-label>
+        <label>
+          <input type="number" min="0" matInput formControlName="quantity">
+        </label>
+      </mat-form-field>
+      <button mat-button>PLAY</button>
+    </div>
   </div>
   <div class="panel page4">
     <div class="boxXL">
@@ -38,7 +47,33 @@
       <div class="heart heartR" *ngFor="let heart of hearts"></div>
       <img (click)="fireL()" class="cannon cannonL" src="assets/scroll.page/cannon.svg">
       <div class="heart heartL" *ngFor="let heart of hearts"></div>
-      <div class="boom">WIELKIE BOOM!!!</div>
+      <div class="rocket head">
+        <div class="shadow1"></div>
+        <div class="shadow2"></div>
+      </div>
+      <div class="rocket boom"
+           (pointerenter)="animationButton($event.target)"
+           (pointerleave)="onAnimation($event.target)"
+           (click)="bigBoom()"
+      >WIELKIE BOOM!!!
+        <div class="shadow shadow1"></div>
+        <div class="shadow shadow2"></div>
+      </div>
+      <div class="rocket fire">
+        <div class="flame fire1"></div>
+        <div class="flame fire2"></div>
+        <div class="flame fire3"></div>
+        <div class="flame fire4"></div>
+      </div>
+      <div class="confetti" *ngFor="let confetti of confetti"></div>
+      <div class="caboom"></div>
+      <div class="textWindow">
+        <div class="ale">Ale</div>
+        <div class="textLine"></div>
+        <div class="sie">się</div>
+        <div class="back"></div>
+        <div class="dzialo">DZIAŁO</div>
+      </div>
     </div>
   </div>
   <div class="panel page5">
