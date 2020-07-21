@@ -6,8 +6,11 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {GSDevTools} from 'gsap/GSDevTools';
 import {Physics2DPlugin} from 'gsap/Physics2DPlugin';
 import {SplitText} from 'gsap/SplitText';
+import {FormBuilder} from '@angular/forms';
+import {MotionPathPlugin} from 'gsap/MotionPathPlugin';
+import {MotionPathHelper} from 'gsap/MotionPathHelper';
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger, GSDevTools, Physics2DPlugin, SplitText);
+gsap.registerPlugin(MotionPathPlugin, ScrollToPlugin, ScrollTrigger, GSDevTools, Physics2DPlugin, SplitText, MotionPathHelper);
 
 interface buttons {
   number: number;
@@ -31,6 +34,11 @@ export class ScrollPageComponent implements OnInit {
   lastWindow = [];
   hearts = [];
   confetti = [];
+  number = 0;
+  number1 = 0;
+  number2 = 42;
+  number3 = 542;
+  number4 = 3215;
   fullWindow = false;
   tl = gsap.timeline();
   buttons$ = new BehaviorSubject<Array<buttons>>([{
@@ -66,7 +74,7 @@ export class ScrollPageComponent implements OnInit {
   ];
   colors = [];
 
-  constructor(private elRef: ElementRef<HTMLElement>) {
+  constructor(private elRef: ElementRef<HTMLElement>, private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -87,7 +95,6 @@ export class ScrollPageComponent implements OnInit {
     const split = new SplitText(block, {type: 'chars'});
     const chars = split.chars;
 
-    // console.log(chars);
     for (let i = 0; i <= split.chars.length; i++) {
       function random(min, max) {
         return (Math.random() * (max - min)) + min;
@@ -432,7 +439,7 @@ export class ScrollPageComponent implements OnInit {
       .to(textWindow, {
         visibility: 'visible',
         duration: .1,
-      }, '+=3')
+      }, '+=4')
       .to(textLine, {
         width: '90%',
         duration: 2,
@@ -451,5 +458,39 @@ export class ScrollPageComponent implements OnInit {
         duration: 2,
         scale: 10,
       });
+  }
+
+  animationNumber(sign: number) {
+    const newNumber = {value: this.number};
+    const show = this.page.nativeElement.querySelector('.show');
+    gsap.to(newNumber, {
+      value: sign,
+      onUpdate: showScore,
+      duration: 1,
+      ease: 'power4'
+    });
+
+    function showScore() {
+      show.innerHTML = newNumber.value.toFixed(0);
+      console.log(newNumber);
+    }
+
+    this.number = sign;
+  }
+
+  flyPlane() {
+    const plane = this.page.nativeElement.querySelector('.plane');
+    // gsap.set(plant, {autoAlpha: 1});
+    gsap.to(plane, {
+      duration: 5,
+      immediateRender: true,
+      motionPath: {
+        path: 'path',
+        align: 'path',
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+      }
+    });
+    MotionPathHelper.create(plane);
   }
 }

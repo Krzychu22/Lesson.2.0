@@ -20,13 +20,18 @@
   </div>
   <div class="panel page3">
     <div class="scrolling">
-      <mat-form-field appearance="outline">
-        <mat-label>Liczba:</mat-label>
-        <label>
-          <input type="number" min="0" matInput formControlName="quantity">
-        </label>
-      </mat-form-field>
-      <button mat-button>PLAY</button>
+      <button mat-raised-button (click)="animationNumber(number1)">{{number1}}</button>
+      <button mat-raised-button (click)="animationNumber(number2)">{{number2}}</button>
+      <button mat-raised-button (click)="animationNumber(number3)">{{number3}}</button>
+      <button mat-raised-button (click)="animationNumber(number4)">{{number4}}</button>
+      <div class="show">{{number}}</div>
+    </div>
+    <div class="photo">
+      <div (click)="flyPlane()"><img class="plant" src="assets/scroll.page/paper-plane.svg"></div>
+      <svg>
+          <path class="zero" fill="none"
+                d="M8,102 C15,83 58,25 131,24 206,24 233,63 259,91 292,125 328,155 377,155 464,155 497,97 504,74"/>
+        </svg>
     </div>
   </div>
   <div class="panel page4">

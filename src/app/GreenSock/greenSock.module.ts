@@ -7,16 +7,20 @@ import { ScrollPageComponent } from './scroll-page/scroll-page.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { AnimationNumberComponent } from './animation-number/animation-number.component';
+import { FlyPlantComponent } from './fly-plant/fly-plant.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
-  declarations: [SomethingComponent, PokedexComponent, ScrollPageComponent],
-  exports: [SomethingComponent, PokedexComponent, ScrollPageComponent],
+  declarations: [SomethingComponent, PokedexComponent, ScrollPageComponent, AnimationNumberComponent, FlyPlantComponent],
+  exports: [SomethingComponent, PokedexComponent, ScrollPageComponent, AnimationNumberComponent, FlyPlantComponent],
   imports: [
     MatButtonModule,
     CommonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
   ],
 
 })
