@@ -8,12 +8,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { AnimationNumberComponent } from './animation-number/animation-number.component';
-import { FlyPlantComponent } from './fly-plant/fly-plant.component';
+import { FlyPlaneComponent } from './fly-plant/fly-plane.component';
 import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
-  declarations: [SomethingComponent, PokedexComponent, ScrollPageComponent, AnimationNumberComponent, FlyPlantComponent],
-  exports: [SomethingComponent, PokedexComponent, ScrollPageComponent, AnimationNumberComponent, FlyPlantComponent],
+  declarations: [SomethingComponent, PokedexComponent, ScrollPageComponent, AnimationNumberComponent, FlyPlaneComponent],
+  exports: [SomethingComponent, PokedexComponent, ScrollPageComponent, AnimationNumberComponent, FlyPlaneComponent],
   imports: [
     MatButtonModule,
     CommonModule,

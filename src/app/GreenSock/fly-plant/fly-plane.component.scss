@@ -1,0 +1,33 @@
+:host {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+//.path {
+//  width: 100%;
+//  height: auto;
+//  //height: 100%;
+//  position: absolute;
+//  border: solid 2px green;
+//}
+
+.containerPlane {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.plane {
+  margin: 10%;
+  width: 60%;
+  height: 60%;
+}
+
+button {
+  position: absolute;
+  background-color: red;
+}
+.box {
+  position: absolute;
+}

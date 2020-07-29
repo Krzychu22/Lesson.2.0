@@ -5,14 +5,12 @@ import {PokedexComponent} from './pokedex/pokedex.component';
 import {ScrollPageComponent} from './scroll-page/scroll-page.component';
 import {AnimationNumberComponent} from './animation-number/animation-number.component';
 import {number, withKnobs} from '@storybook/addon-knobs';
-import {FlyPlantComponent} from './fly-plant/fly-plant.component';
+import {FlyPlaneComponent} from './fly-plant/fly-plane.component';
 
 
 const decoration = {
   imports: [GreenSockModule],
   declarations: [],
-
-
 };
 
 
@@ -24,10 +22,33 @@ storiesOf('GreenSock / Single element', module)
     props: {} as Partial<SomethingComponent>,
     component: SomethingComponent
   }))
-  .add('Plane', () => ({
-    template: `<app-fly-plant></app-fly-plant>`,
-    props: {} as Partial<FlyPlantComponent>,
-    component: FlyPlantComponent
+  .add('Plane 1', () => ({
+    template: `<app-fly-plane [position]="position"></app-fly-plane>`,
+    props: {
+      position: {top: 30, left: 60},
+    } as Partial<FlyPlaneComponent>,
+    component: FlyPlaneComponent
+  }))
+  .add('Plane 2', () => ({
+    template: `<app-fly-plane [position]="position"></app-fly-plane>`,
+    props: {
+      position: {top: 10, left: 40},
+    } as Partial<FlyPlaneComponent>,
+    component: FlyPlaneComponent
+  }))
+  .add('Plane 3', () => ({
+    template: `<app-fly-plane [position]="position"></app-fly-plane>`,
+    props: {
+      position: {top: 80, left: 10},
+    } as Partial<FlyPlaneComponent>,
+    component: FlyPlaneComponent
+  }))
+  .add('Plane 4', () => ({
+    template: `<app-fly-plane [position]="position"></app-fly-plane>`,
+    props: {
+      position: {top: 70, left: 80},
+    } as Partial<FlyPlaneComponent>,
+    component: FlyPlaneComponent
   }))
   .add('Animation Number', () => ({
     template: `<app-animation-number style="width:400px; height:400px" [newNumber]="newNumber"></app-animation-number>`,
