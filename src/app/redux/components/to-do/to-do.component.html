@@ -1,0 +1,37 @@
+<input matInput #string />
+<button
+  mat-raised-button
+  (click)="add(string.value); string.value = ''"
+  *ngIf="!isEdit"
+>
+  Dodaj
+</button>
+<button
+  mat-raised-button
+  (click)="change(string.value); string.value = ''"
+  *ngIf="isEdit"
+>
+  Zmień
+</button>
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div
+    cdkDrag
+    class="example-box"
+    *ngFor="let current of currentValue$ | async"
+  >
+    <mat-checkbox
+      [checked]="current.checked"
+      (change)="checked(current.id, current.checked)"
+    ></mat-checkbox>
+    {{ current.text }}
+    <button mat-raised-button (click)="delete(current.id)" *ngIf="!isEdit">
+      Usuń
+    </button>
+    <button
+      mat-raised-button
+      (click)="edit(current.id); string.value = current.text"
+    >
+      Edytuj
+    </button>
+  </div>
+</div>

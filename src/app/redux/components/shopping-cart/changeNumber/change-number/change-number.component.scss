@@ -1,0 +1,44 @@
+.box {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #555555;
+  display: flex;
+  overflow: hidden;
+}
+
+.minus, .plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+}
+
+button {
+  border-radius: 0;
+  border: none;
+  outline: none;
+cursor: pointer;
+}
+
+.number {
+  line-height: 27.5px;
+  text-align: center;
+  height: 100%;
+  border-left: 1px solid #555555;
+  border-right: 1px solid #555555;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  -moz-appearance: textfield;
+  width: 35px;
+  border-radius: 0;
+  border: none;
+  outline: none;
+
+}

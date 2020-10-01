@@ -1,0 +1,15 @@
+<div class="box">
+  <button class="minus" (click)="reduce()">
+    <mat-icon>remove</mat-icon>
+  </button>
+  <input
+    class="number"
+    [formControl]="control"
+    type="text"
+    min="1"
+    (keydown)="filter($event)"
+  />
+  <button class="plus" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

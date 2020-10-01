@@ -1,0 +1,7 @@
+<p>sample works!</p>
+<p>{{ currentValue$ | async }}</p>
+
+<button (click)="increase()">dodaj</button>
+<button (click)="decrease()">odejmij</button>
+<button (click)="reset()">reset</button>
+<input #val type="number" /> <button (click)="set(val.value)">Ustaw</button>

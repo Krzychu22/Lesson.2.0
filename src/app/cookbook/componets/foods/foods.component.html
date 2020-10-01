@@ -1,7 +1,10 @@
 <div class="card">
   <div class="title">
     <div>nowy produkt</div>
-    <button mat-icon-button [routerLink]="['/NotReadyRecipe', recipeId$ | async]">
+    <button
+      mat-icon-button
+      [routerLink]="['/NotReadyRecipe', recipeId$ | async]"
+    >
       <mat-icon>close</mat-icon>
     </button>
   </div>
@@ -10,8 +13,20 @@
       <mat-form-field appearance="fill">
         <mat-label>Produkt:</mat-label>
         <label>
-          <input style="text-transform: lowercase" matInput formControlName="name" (keyup.enter)="addFoods()" *ngIf="!isEdit">
-          <input style="text-transform: lowercase" matInput formControlName="name" (keyup.enter)="changeFoods()" *ngIf="isEdit">
+          <input
+            style="text-transform: lowercase;"
+            matInput
+            formControlName="name"
+            (keyup.enter)="addFoods()"
+            *ngIf="!isEdit"
+          />
+          <input
+            style="text-transform: lowercase;"
+            matInput
+            formControlName="name"
+            (keyup.enter)="changeFoods()"
+            *ngIf="isEdit"
+          />
         </label>
       </mat-form-field>
     </div>
@@ -19,8 +34,18 @@
       <mat-form-field appearance="fill">
         <mat-label>Jednostka:</mat-label>
         <label>
-          <input matInput formControlName="unit" (keyup.enter)="addFoods()" *ngIf="!isEdit">
-          <input matInput formControlName="unit" (keyup.enter)="changeFoods()" *ngIf="isEdit">
+          <input
+            matInput
+            formControlName="unit"
+            (keyup.enter)="addFoods()"
+            *ngIf="!isEdit"
+          />
+          <input
+            matInput
+            formControlName="unit"
+            (keyup.enter)="changeFoods()"
+            *ngIf="isEdit"
+          />
         </label>
       </mat-form-field>
     </div>
@@ -28,35 +53,81 @@
       <mat-form-field appearance="outline">
         <mat-label>Kalorie:</mat-label>
         <label>
-          <input  type="number" min="0" matInput formControlName="calories"  (keyup.enter)="addFoods()" *ngIf="!isEdit">
-          <input type="number" min="0" matInput formControlName="calories"  (keyup.enter)="changeFoods()" *ngIf="isEdit">
+          <input
+            type="number"
+            min="0"
+            matInput
+            formControlName="calories"
+            (keyup.enter)="addFoods()"
+            *ngIf="!isEdit"
+          />
+          <input
+            type="number"
+            min="0"
+            matInput
+            formControlName="calories"
+            (keyup.enter)="changeFoods()"
+            *ngIf="isEdit"
+          />
         </label>
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Alergeny:</mat-label>
-        <mat-select formControlName="allergies" (keyup.enter)="addFoods()" *ngIf="!isEdit">
-          <mat-option >Nic</mat-option>
-          <mat-option *ngFor="let allergy of allergies$ | async" [value]="allergy.allergies">{{allergy.allergies}}</mat-option>
+        <mat-select
+          formControlName="allergies"
+          (keyup.enter)="addFoods()"
+          *ngIf="!isEdit"
+        >
+          <mat-option>Nic</mat-option>
+          <mat-option
+            *ngFor="let allergy of allergies$ | async"
+            [value]="allergy.allergies"
+            >{{ allergy.allergies }}</mat-option
+          >
         </mat-select>
-        <mat-select formControlName="allergies" (keyup.enter)="changeFoods()" *ngIf="isEdit">
-          <mat-option >Nic</mat-option>
-          <mat-option *ngFor="let allergy of allergies$ | async" [value]="allergy.allergies">{{allergy.allergies}}</mat-option>
+        <mat-select
+          formControlName="allergies"
+          (keyup.enter)="changeFoods()"
+          *ngIf="isEdit"
+        >
+          <mat-option>Nic</mat-option>
+          <mat-option
+            *ngFor="let allergy of allergies$ | async"
+            [value]="allergy.allergies"
+            >{{ allergy.allergies }}</mat-option
+          >
         </mat-select>
       </mat-form-field>
     </div>
     <div>
-      <button class="product" mat-raised-button (click)="addFoods()" [disabled]="model.invalid" *ngIf="!isEdit">DODAJ</button>
-      <button class="product" mat-raised-button (click)="changeFoods()" [disabled]="model.invalid" *ngIf="isEdit">ZMIEŃ</button>
+      <button
+        class="product"
+        mat-raised-button
+        (click)="addFoods()"
+        [disabled]="model.invalid"
+        *ngIf="!isEdit"
+      >
+        DODAJ
+      </button>
+      <button
+        class="product"
+        mat-raised-button
+        (click)="changeFoods()"
+        [disabled]="model.invalid"
+        *ngIf="isEdit"
+      >
+        ZMIEŃ
+      </button>
     </div>
   </div>
   <div class="subtitle" *ngFor="let food of foods$ | async; index as i">
-    <div>{{i + 1}}.</div>
-    <a>{{food.name}}</a>
-    <div>{{food.unit}}</div>
-    <div>{{food.calories}} kalori</div>
-    <div>{{food.allergies}}</div>
+    <div>{{ i + 1 }}.</div>
+    <a>{{ food.name }}</a>
+    <div>{{ food.unit }}</div>
+    <div>{{ food.calories }} kalori</div>
+    <div>{{ food.allergies }}</div>
     <div>
       <button mat-icon-button [matMenuTriggerFor]="appMenu">
         <mat-icon>more_vert</mat-icon>
@@ -68,4 +139,3 @@
     </div>
   </div>
 </div>
-

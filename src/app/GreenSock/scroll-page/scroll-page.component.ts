@@ -1,16 +1,23 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {gsap} from 'gsap';
-import {ScrollToPlugin} from 'gsap/ScrollToPlugin';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
-import {GSDevTools} from 'gsap/GSDevTools';
-import {Physics2DPlugin} from 'gsap/Physics2DPlugin';
-import {SplitText} from 'gsap/SplitText';
-import {FormBuilder} from '@angular/forms';
-import {MotionPathPlugin} from 'gsap/MotionPathPlugin';
-import {MotionPathHelper} from 'gsap/MotionPathHelper';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { GSDevTools } from 'gsap/GSDevTools';
+import { Physics2DPlugin } from 'gsap/Physics2DPlugin';
+import { SplitText } from 'gsap/SplitText';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { MotionPathHelper } from 'gsap/MotionPathHelper';
 
-gsap.registerPlugin(MotionPathPlugin, ScrollToPlugin, ScrollTrigger, GSDevTools, Physics2DPlugin, SplitText, MotionPathHelper);
+gsap.registerPlugin(
+  MotionPathPlugin,
+  ScrollToPlugin,
+  ScrollTrigger,
+  GSDevTools,
+  Physics2DPlugin,
+  SplitText,
+  MotionPathHelper
+);
 
 interface buttons {
   number: number;
@@ -20,13 +27,13 @@ interface buttons {
 @Component({
   selector: 'app-scroll-page',
   templateUrl: './scroll-page.component.html',
-  styleUrls: ['./scroll-page.component.scss']
+  styleUrls: ['./scroll-page.component.scss'],
 })
-
 export class ScrollPageComponent implements OnInit {
   @ViewChild('page', {
     static: true,
-  }) page: ElementRef<HTMLElement>;
+  })
+  page: ElementRef<HTMLElement>;
   animationMap = new WeakMap();
   click = false;
   window = false;
@@ -41,31 +48,36 @@ export class ScrollPageComponent implements OnInit {
   number4 = 3215;
   fullWindow = false;
   tl = gsap.timeline();
-  buttons$ = new BehaviorSubject<Array<buttons>>([{
-    number: 1,
-    text: `1. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+  buttons$ = new BehaviorSubject<Array<buttons>>([
+    {
+      number: 1,
+      text: `1. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
           Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
           Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac,
-          laoreet enim.`
-  }, {
-    number: 2,
-    text: `2. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+          laoreet enim.`,
+    },
+    {
+      number: 2,
+      text: `2. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
           Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
           Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac,
-          laoreet enim.`
-  }, {
-    number: 3,
-    text: `3. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+          laoreet enim.`,
+    },
+    {
+      number: 3,
+      text: `3. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
           Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
           Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac,
-          laoreet enim.`
-  }, {
-    number: 4,
-    text: `4. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
+          laoreet enim.`,
+    },
+    {
+      number: 4,
+      text: `4. Lorem ipsum dolor sit amet enim. Etiam ullamcorper.
           Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
           Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac,
-          laoreet enim.`
-  }]);
+          laoreet enim.`,
+    },
+  ]);
   colorsPalette = [
     ['#DC143C', '#B8860B', '#006400', '#8B008B', '#00008B', '#D2691E'],
     ['#FF1493', '#00BFFF', '#FF4500', '#8B008B', '#FF0000', '#40E0D0'],
@@ -74,30 +86,34 @@ export class ScrollPageComponent implements OnInit {
   ];
   colors = [];
 
-  constructor(private elRef: ElementRef<HTMLElement>, private fb: FormBuilder) {
-  }
+  constructor() {}
 
   ngOnInit() {
-    gsap.timeline({
-      yoyo: true,
-      repeat: -1
-    })
+    gsap
+      .timeline({
+        yoyo: true,
+        repeat: -1,
+      })
       .from(this.page.nativeElement.querySelectorAll('.balloon'), {
         duration: 2,
         backgroundColor: 'green',
         y: -100,
-      }).from(this.page.nativeElement.querySelectorAll('.triangle'), {
-      duration: 2,
-      borderBottom: 'solid 20px green',
-    }, '<');
+      })
+      .from(
+        this.page.nativeElement.querySelectorAll('.triangle'),
+        {
+          duration: 2,
+          borderBottom: 'solid 20px green',
+        },
+        '<'
+      );
     gsap.registerPlugin(ScrollTrigger);
     const block = this.page.nativeElement.querySelector('.hello');
-    const split = new SplitText(block, {type: 'chars'});
+    const split = new SplitText(block, { type: 'chars' });
     const chars = split.chars;
-
     for (let i = 0; i <= split.chars.length; i++) {
       function random(min, max) {
-        return (Math.random() * (max - min)) + min;
+        return Math.random() * (max - min) + min;
       }
 
       if (chars[i]) {
@@ -108,7 +124,7 @@ export class ScrollPageComponent implements OnInit {
             end: 'top 20%',
             scrub: true,
             // markers: true,
-            toggleActions: 'restart none reverse pause'
+            toggleActions: 'restart none reverse pause',
           },
           x: random(-200, 200),
           y: random(-200, 200),
@@ -124,7 +140,7 @@ export class ScrollPageComponent implements OnInit {
     const page3 = this.page.nativeElement.querySelector('.page3');
     const page = this.page.nativeElement.querySelectorAll('.panel');
     tl.from(page3, {
-      yPercent: 100
+      yPercent: 100,
     });
     ScrollTrigger.create({
       animation: tl,
@@ -133,9 +149,9 @@ export class ScrollPageComponent implements OnInit {
       end: '+=900',
       pinSpacing: false,
       // markers: true,
-      scrub: (page.length - 1),
+      scrub: page.length - 1,
       pin: true,
-      anticipatePin: 1
+      anticipatePin: 1,
     });
 
     const box1 = this.page.nativeElement.querySelector('.box1');
@@ -144,27 +160,40 @@ export class ScrollPageComponent implements OnInit {
     const rectangle = this.page.nativeElement.querySelectorAll('.rectangle');
     const text1 = this.page.nativeElement.querySelectorAll('.text1');
     const text2 = this.page.nativeElement.querySelectorAll('.text2');
-    const stText1 = new SplitText(text1, {type: 'chars'});
-    const stText2 = new SplitText(text2, {type: 'chars'});
+    const stText1 = new SplitText(text1, { type: 'chars' });
+    const stText2 = new SplitText(text2, { type: 'chars' });
     const tlBox = gsap.timeline();
-    tlBox.to(box1, {
-      yPercent: 200,
-      duration: 1,
-    })
-      .to(box2, {
-        yPercent: -400,
+    tlBox
+      .to(box1, {
+        yPercent: 200,
         duration: 1,
-      }, '<')
-      .to(square, {
-        x: '15vw',
-        rotation: 380,
-        duration: 1,
-      }, '<')
-      .to(rectangle, {
-        width: '0',
-        duration: 1,
-        x: '15.8vw',
-      }, '<');
+      })
+      .to(
+        box2,
+        {
+          yPercent: -400,
+          duration: 1,
+        },
+        '<'
+      )
+      .to(
+        square,
+        {
+          x: '15vw',
+          rotation: 380,
+          duration: 1,
+        },
+        '<'
+      )
+      .to(
+        rectangle,
+        {
+          width: '0',
+          duration: 1,
+          x: '15.8vw',
+        },
+        '<'
+      );
     ScrollTrigger.create({
       animation: tlBox,
       trigger: page3,
@@ -174,7 +203,7 @@ export class ScrollPageComponent implements OnInit {
       // markers: true,
       scrub: true,
       pin: true,
-      anticipatePin: 1
+      anticipatePin: 1,
     });
     if (stText1.chars) {
       gsap.from(stText1.chars, {
@@ -190,7 +219,7 @@ export class ScrollPageComponent implements OnInit {
           // markers: true,
           scrub: true,
           pin: true,
-          anticipatePin: 1
+          anticipatePin: 1,
         },
       });
     }
@@ -208,11 +237,10 @@ export class ScrollPageComponent implements OnInit {
           // markers: true,
           scrub: true,
           pin: true,
-          anticipatePin: 1
+          anticipatePin: 1,
         },
       });
     }
-
 
     for (let i = 0; i < 100; i++) {
       this.hearts.push(i);
@@ -220,11 +248,12 @@ export class ScrollPageComponent implements OnInit {
     for (let i = 0; i < 500; i++) {
       this.confetti.push(i);
     }
-    this.colors = this.colorsPalette[(Math.random() * this.colorsPalette.length) | 0];
+    this.colors = this.colorsPalette[
+      (Math.random() * this.colorsPalette.length) | 0
+    ];
   }
 
   animationBall(button) {
-
     if (!this.animationMap.has(button)) {
       const tl = gsap.timeline();
       tl.to(button, {
@@ -242,7 +271,6 @@ export class ScrollPageComponent implements OnInit {
       if (this.animationMap.has(button)) {
         this.animationMap.get(button).reverse();
       }
-
     }
   }
 
@@ -252,11 +280,12 @@ export class ScrollPageComponent implements OnInit {
     }
     this.fullWindow = true;
     const window = button.querySelector('.window');
-    const mySplitText = new SplitText(window, {type: 'chars'});
-    this.tl.to(button, {
-      borderColor: 'blue',
-      duration: 1,
-    })
+    const mySplitText = new SplitText(window, { type: 'chars' });
+    this.tl
+      .to(button, {
+        borderColor: 'blue',
+        duration: 1,
+      })
       .to(window, {
         duration: 1,
         transformOrigin: 'center center',
@@ -272,11 +301,12 @@ export class ScrollPageComponent implements OnInit {
   resetWindow() {
     if (this.fullWindow) {
       console.log('eeeeeeeeeeee', this.lastWindow);
-      this.tl.to(this.lastWindow, {
-        duration: 1,
-        transformOrigin: 'center center',
-        scale: 0,
-      })
+      this.tl
+        .to(this.lastWindow, {
+          duration: 1,
+          transformOrigin: 'center center',
+          scale: 0,
+        })
         .to(this.lastButton, {
           borderColor: 'red',
           duration: 1,
@@ -293,7 +323,8 @@ export class ScrollPageComponent implements OnInit {
     for (let i = 0; i <= heart.length; i++) {
       if (heart[i]) {
         gsap.set(heart[i], {
-          x: 0, y: 0,
+          x: 0,
+          y: 0,
         });
         gsap.to(heart[i], {
           physics2D: {
@@ -301,7 +332,7 @@ export class ScrollPageComponent implements OnInit {
             angle: -150,
             gravity: Math.random() * 80 + 400,
           },
-          scale: Math.random() + .2,
+          scale: Math.random() + 0.2,
           duration: 2.5,
           delay: Math.random(),
         });
@@ -314,8 +345,9 @@ export class ScrollPageComponent implements OnInit {
     for (let i = 0; i <= heart.length; i++) {
       if (heart[i]) {
         gsap.set(heart[i], {
-          x: 0, y: 0,
-          scale: Math.random() + .2,
+          x: 0,
+          y: 0,
+          scale: Math.random() + 0.2,
         });
         gsap.to(heart[i], {
           physics2D: {
@@ -345,18 +377,20 @@ export class ScrollPageComponent implements OnInit {
 
   bigBoom() {
     this.click = true;
-    const windowBoom = (this.page.nativeElement.querySelectorAll('.windowBoom, .box, .boxXL'));
-    const button = (this.page.nativeElement.querySelector('.boom'));
-    const caboom = (this.page.nativeElement.querySelector('.caboom'));
-    const shadow = (this.page.nativeElement.querySelectorAll('.shadow'));
-    const head = (this.page.nativeElement.querySelector('.head'));
-    const fire = (this.page.nativeElement.querySelector('.fire'));
+    const windowBoom = this.page.nativeElement.querySelectorAll(
+      '.windowBoom, .box, .boxXL'
+    );
+    const button = this.page.nativeElement.querySelector('.boom');
+    const caboom = this.page.nativeElement.querySelector('.caboom');
+    const shadow = this.page.nativeElement.querySelectorAll('.shadow');
+    const head = this.page.nativeElement.querySelector('.head');
+    const fire = this.page.nativeElement.querySelector('.fire');
     const confetti = this.page.nativeElement.querySelectorAll('.confetti');
-    const textWindow = (this.page.nativeElement.querySelector('.textWindow'));
-    const textLine = (this.page.nativeElement.querySelector('.textLine'));
-    const ale = (this.page.nativeElement.querySelector('.ale'));
-    const sie = (this.page.nativeElement.querySelector('.sie'));
-    const dzialo = (this.page.nativeElement.querySelector('.dzialo'));
+    const textWindow = this.page.nativeElement.querySelector('.textWindow');
+    const textLine = this.page.nativeElement.querySelector('.textLine');
+    const ale = this.page.nativeElement.querySelector('.ale');
+    const sie = this.page.nativeElement.querySelector('.sie');
+    const dzialo = this.page.nativeElement.querySelector('.dzialo');
     const tl = gsap.timeline();
     tl.to(button, {
       cursor: 'auto',
@@ -366,84 +400,128 @@ export class ScrollPageComponent implements OnInit {
       x: 100,
       duration: 1,
     })
-      .to(shadow, {
-        visibility: 'visible'
-      }, '<')
+      .to(
+        shadow,
+        {
+          visibility: 'visible',
+        },
+        '<'
+      )
       .to(button, {
         y: -150,
         duration: 1,
       })
-      .to(head, {
-        y: -225,
-        duration: 1,
-      }, '<')
+      .to(
+        head,
+        {
+          y: -225,
+          duration: 1,
+        },
+        '<'
+      )
       .to(fire, {
         transformOrigin: 'right, top',
         scale: 1.3,
       })
       .to(fire, {
         transformOrigin: 'right, bottom',
-        scale: Math.random() * .3 + 1,
+        scale: Math.random() * 0.3 + 1,
         yoyo: true,
-        repeat: -1
+        repeat: -1,
       })
-      .to(button, {
-        y: -450,
-        duration: 1,
-      }, '+=1')
-      .to(head, {
-        y: -525,
-        duration: 1,
-      }, '<')
-      .to(fire, {
-        y: -300,
-        duration: 1,
-      }, '<');
+      .to(
+        button,
+        {
+          y: -450,
+          duration: 1,
+        },
+        '+=1'
+      )
+      .to(
+        head,
+        {
+          y: -525,
+          duration: 1,
+        },
+        '<'
+      )
+      .to(
+        fire,
+        {
+          y: -300,
+          duration: 1,
+        },
+        '<'
+      );
 
     for (let i = 0; i <= confetti.length; i++) {
       const color = this.colors[(Math.random() * this.colors.length) | 0];
       if (confetti[i]) {
-        tl.set(confetti[i], {
-          y: Math.random() * 70,
-          x: 0,
-          backgroundColor: color,
-          visibility: 'visible',
-          scale: Math.random() + .9,
-        }, '-<.5');
-        tl.to(confetti[i], {
-          physics2D: {
-            velocity: Math.random() * 300 + 200,
-            angle: Math.random() * 300 + 100,
-            gravity: Math.random() * 80 + 400,
+        tl.set(
+          confetti[i],
+          {
+            y: Math.random() * 70,
+            x: 0,
+            backgroundColor: color,
+            visibility: 'visible',
+            scale: Math.random() + 0.9,
           },
-          duration: 4,
-          delay: Math.random(),
-          rotateX: Math.random() * 360,
-          rotateY: Math.random() * 360,
-          rotateZ: Math.random() * 360,
-        }, '-<i');
+          '-<.5'
+        );
+        tl.to(
+          confetti[i],
+          {
+            physics2D: {
+              velocity: Math.random() * 300 + 200,
+              angle: Math.random() * 300 + 100,
+              gravity: Math.random() * 80 + 400,
+            },
+            duration: 4,
+            delay: Math.random(),
+            rotateX: Math.random() * 360,
+            rotateY: Math.random() * 360,
+            rotateZ: Math.random() * 360,
+          },
+          '-<i'
+        );
       }
     }
-    tl.to(caboom, {
-      filter: 'blur(0px)',
-      transformOrigin: 'center center',
-      scale: 2,
-      duration: 5,
-    }, '-=4')
-      .to(windowBoom, {
-        x: 5,
-        duration: .1,
-        yoyo: true,
-        repeat: 46,
-      }, '<')
-      .to(textWindow, {
-        visibility: 'visible',
-        duration: .1,
-      }, '+=4')
-      .to(textLine, {
-        width: '90%',
-        duration: 2,
-      }, '-<3')
+    tl.to(
+      caboom,
+      {
+        filter: 'blur(0px)',
+        transformOrigin: 'center center',
+        scale: 2,
+        duration: 5,
+      },
+      '-=4'
+    )
+      .to(
+        windowBoom,
+        {
+          x: 5,
+          duration: 0.1,
+          yoyo: true,
+          repeat: 46,
+        },
+        '<'
+      )
+      .to(
+        textWindow,
+        {
+          visibility: 'visible',
+          duration: 0.1,
+        },
+        '+=4'
+      )
+      .to(
+        textLine,
+        {
+          width: '90%',
+          duration: 2,
+        },
+        '-<3'
+      )
       .to(ale, {
         duration: 2,
         rotateX: 360,
@@ -461,13 +539,13 @@ export class ScrollPageComponent implements OnInit {
   }
 
   animationNumber(sign: number) {
-    const newNumber = {value: this.number};
+    const newNumber = { value: this.number };
     const show = this.page.nativeElement.querySelector('.show');
     gsap.to(newNumber, {
       value: sign,
       onUpdate: showScore,
       duration: 1,
-      ease: 'power4'
+      ease: 'power4',
     });
 
     function showScore() {
@@ -488,8 +566,8 @@ export class ScrollPageComponent implements OnInit {
         path: 'path',
         align: 'path',
         autoRotate: true,
-        alignOrigin: [0.5, 0.5]
-      }
+        alignOrigin: [0.5, 0.5],
+      },
     });
     MotionPathHelper.create(plane);
   }

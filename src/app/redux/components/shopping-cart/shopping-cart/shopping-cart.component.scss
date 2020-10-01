@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+}
+table {
+  padding: 5px 35px 5px 35px;
+}
+.selected {
+  float: right;
+}
+td {
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.cost {
+  padding: 5px;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  border: 1px solid black;
+  width: auto;
+  height: 60px;
+  line-height: 30px;
+}
+.oldCost {
+  text-decoration: line-through;
+}

@@ -1,0 +1,72 @@
+<div>
+  <table class="products">
+    <tr>
+      <td>Nazwa produktu</td>
+      <td>Cena</td>
+      <td>Ilość</td>
+      <td>Darmowe</td>
+      <td>Typ</td>
+    </tr>
+    <tr *ngFor="let product of products$ | async">
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }} zł</td>
+      <td>
+        <input type="number" min="1" #number (keydown)="filter($event)" />
+      </td>
+      <td>{{ product.free }} sztuk</td>
+      <td>{{ product.type }}</td>
+      <td>
+        <button (click)="add(product.id, number.value)">
+          Dodaj
+        </button>
+      </td>
+    </tr>
+  </table>
+  <table class="selected">
+    <tr>
+      <td>Nazwa produktu</td>
+      <td>Cena</td>
+      <td>Po obniżce</td>
+      <td>Ilość</td>
+    </tr>
+    <tr
+      *ngFor="let product of selected$ | async; trackBy: trackByFn; index as i"
+    >
+      <td>{{ (product.id | product | async)?.name }}</td>
+      <td>{{ product.price }} zł</td>
+      <td>{{ (reducedPrice$ | async)[i * 2] }} zł</td>
+      <td>
+        <app-change-number
+          [number]="product.quantity"
+          (newNumber)="change(product.id, $event)"
+        ></app-change-number>
+      </td>
+      <td>
+        <button (click)="delete(product.id)">Usuń</button>
+      </td>
+    </tr>
+  </table>
+  <table class="type">
+    <tr>
+      <td>Typ</td>
+      <td>Zniżka</td>
+      <td>Od</td>
+    </tr>
+    <tr *ngFor="let voucher of vouchers$ | async">
+      <td>{{ voucher.type }}</td>
+      <td>{{ voucher.percentDiscount }} %</td>
+      <td>{{ voucher.price }} zł</td>
+    </tr>
+  </table>
+  <div class="cost" *ngFor="let cost of cost$ | async">
+    <div *ngIf="cost.afterDiscount >= cost.beforeDiscount">
+      Cena wszystkiego: {{ cost.beforeDiscount }} zł
+    </div>
+    <div class="oldCost" *ngIf="cost.afterDiscount < cost.beforeDiscount">
+      Cena wszystkiego: {{ cost.beforeDiscount }} zł
+    </div>
+    <div *ngIf="cost.afterDiscount < cost.beforeDiscount">
+      Nowa cena: {{ cost.afterDiscount }} zł
+    </div>
+  </div>
+</div>
