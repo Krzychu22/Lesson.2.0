@@ -1,15 +1,12 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-calculator2',
   templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.scss']
+  styleUrls: ['./calculator.component.scss'],
 })
 export class CalculatorComponent implements OnInit {
-
-
-  constructor() {
-  }
+  constructor() {}
 
   symbols1 = '';
   symbols2 = '';
@@ -20,7 +17,7 @@ export class CalculatorComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
     console.log(event.key);
-    // switch (event.key)[ {
+    // switch (event.key) {
     //   case '1':
     //   case '2':
     //   case '3':
@@ -41,7 +38,10 @@ export class CalculatorComponent implements OnInit {
     //     break;
     //
     // }
-    if (['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].indexOf(event.key) !== -1) {
+    if (
+      ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].indexOf(event.key) !==
+      -1
+    ) {
       this.number(Number(event.key));
     }
     if (['+', '-', '*', '/'].indexOf(event.key) !== -1) {
@@ -55,40 +55,32 @@ export class CalculatorComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   number(what: number) {
     console.log(what);
-    if (
-      this.isSign
-    ) {
+    if (this.isSign) {
       this.isSign = false;
       this.NaN = true;
-      this.symbols2 = this.symbols1;            // tworzenie liczy 2
-      this.lastSign = this.display;             // zapisywanie znaku
+      this.symbols2 = this.symbols1; // tworzenie liczy 2
+      this.lastSign = this.display; // zapisywanie znaku
       this.display = '';
     }
-    this.display = this.display + what;       // tworzenie liczb
+    this.display = this.display + what; // tworzenie liczb
     this.symbols1 = this.display;
-
   }
 
   sign(what) {
     console.log(what);
-    if (
-      this.NaN
-    ) {
+    if (this.NaN) {
       this.NaN = false;
       this.lastSign = what;
       this.display = this.symbols1;
-
     }
     this.symbols1 = this.display;
     this.isSign = true;
     this.NaN = true;
-    this.display = what;                      // pokazywanie znak
-
+    this.display = what; // pokazywanie znak
   }
 
   remove(what) {
@@ -97,24 +89,22 @@ export class CalculatorComponent implements OnInit {
 
   result(what) {
     switch (this.lastSign) {
-      case '+':                                  // dodawanie
+      case '+': // dodawanie
         this.NaN = false;
         this.display = String(Number(this.symbols2) + Number(this.symbols1));
         break;
-      case '-':                                  // odejmowanie
+      case '-': // odejmowanie
         this.NaN = false;
         this.display = String(Number(this.symbols2) - Number(this.symbols1));
         break;
-      case '*':                                  // mnożenie
+      case '*': // mnożenie
         this.NaN = false;
         this.display = String(Number(this.symbols2) * Number(this.symbols1));
         break;
-      case '/':                                  // dzielenie
+      case '/': // dzielenie
         this.NaN = false;
         this.display = String(Number(this.symbols2) / Number(this.symbols1));
         break;
     }
   }
 }
-
-

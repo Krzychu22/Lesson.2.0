@@ -83,6 +83,7 @@ export class ChangeNumberComponent extends AliveState implements OnInit {
       for (let j = 0; j < target.selectionStart; j++) {
         leftCurrent += String(this.control.value)[j];
       }
+      console.log(111111, target.selectionStart);
       console.log('prawa strona:', rightCurrent, 'lewa strona:', leftCurrent);
       newCurrent = leftCurrent;
       newCurrent += rightCurrent;
