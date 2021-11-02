@@ -1,22 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {FoodInRecipe, FoodInterface, RecipeStep} from '../../type';
-import {RecipeService} from '../../services/recipe.service';
-import {CdkDragDrop} from '@angular/cdk/drag-drop';
-import {FormBuilder, Validators} from '@angular/forms';
-import {FoodsService} from '../../services/foods.service';
-import {first, map, pluck, switchMap} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
-import {MealService} from '../../services/meal.service';
-import {AllCulinaryRecipesService} from '../../services/all-culinary-recipes.service';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FoodInRecipe, FoodInterface, RecipeStep } from '../../type';
+import { RecipeService } from '../../services/recipe.service';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FoodsService } from '../../services/foods.service';
+import { first, map, pluck, switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { MealService } from '../../services/meal.service';
+import { AllCulinaryRecipesService } from '../../services/all-culinary-recipes.service';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.scss']
+  styleUrls: ['./recipe.component.scss'],
 })
 export class RecipeComponent implements OnInit {
-
   modelRealization = this.fb.group({
     content: ['', [Validators.required, Validators.minLength(1)]],
   });
@@ -27,14 +26,19 @@ export class RecipeComponent implements OnInit {
   });
 
   recipeId$ = this.route.params.pipe(pluck('recipeId'));
-  realizations$: Observable<Array<RecipeStep>> = this.recipeId$.pipe(switchMap(recipeId => this.RecipeService.getRealizations(recipeId)));
-  products$: Observable<Array<FoodInRecipe>> = this.recipeId$.pipe(switchMap(recipeId => this.FoodService.getProducts(recipeId)));
+  realizations$: Observable<Array<RecipeStep>> = this.recipeId$.pipe(
+    switchMap((recipeId) => this.RecipeService.getRealizations(recipeId))
+  );
+  products$: Observable<Array<FoodInRecipe>> = this.recipeId$.pipe(
+    switchMap((recipeId) => this.FoodService.getProducts(recipeId))
+  );
   meal$ = this.recipeId$.pipe(
-    switchMap(recipeId =>
+    switchMap((recipeId) =>
       this.MealService.recipes$.pipe(
-        map(recipes => recipes.find(recipe => recipe.recipeId === recipeId))
+        map((recipes) => recipes.find((recipe) => recipe.recipeId === recipeId))
       )
-    ));
+    )
+  );
   name$ = this.meal$.pipe(pluck('name'));
   mealId$ = this.meal$.pipe(pluck('mealId'));
 
@@ -44,10 +48,18 @@ export class RecipeComponent implements OnInit {
   editedIndexRealization = null;
   editedIndexFood = null;
   blockingDrop = false;
-  unit$ = this.modelFood.controls.foodId.valueChanges.pipe(map(value => this.FoodService.getFood(value)?.unit));
+  unit$ = this.modelFood.controls.foodId.valueChanges.pipe(
+    map((value) => this.FoodService.getFood(value)?.unit)
+  );
 
-  constructor(private fb: FormBuilder, private CulinaryService: AllCulinaryRecipesService, private RecipeService: RecipeService, private MealService: MealService, private FoodService: FoodsService, private route: ActivatedRoute) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private CulinaryService: AllCulinaryRecipesService,
+    private RecipeService: RecipeService,
+    private MealService: MealService,
+    private FoodService: FoodsService,
+    private route: ActivatedRoute
+  ) {}
 
   /**
    * produkty
@@ -77,7 +89,10 @@ export class RecipeComponent implements OnInit {
   }
 
   changeProduct() {
-    this.FoodService.updateProduct(this.modelFood.getRawValue(), this.editedIndexFood);
+    this.FoodService.updateProduct(
+      this.modelFood.getRawValue(),
+      this.editedIndexFood
+    );
     this.modelFood.reset();
     this.isEditFood = false;
     this.blockingDrop = false;
@@ -117,13 +132,14 @@ export class RecipeComponent implements OnInit {
   }
 
   changeRealization() {
-    this.RecipeService.updateRealization(this.modelRealization.getRawValue(), this.editedIndexRealization);
+    this.RecipeService.updateRealization(
+      this.modelRealization.getRawValue(),
+      this.editedIndexRealization
+    );
     this.modelRealization.reset();
     this.isEditRealization = false;
     this.blockingDrop = false;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

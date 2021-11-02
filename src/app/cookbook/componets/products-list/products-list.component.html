@@ -1,18 +1,25 @@
 <div>
   <div class="board" *ngFor="let product of products; index as a">
+    <div class="number">{{ a + 1 }}</div>
+    <div class="text">
+      {{ (product.foodId | food)?.name }}
+    </div>
+    <div class="number">
+      {{ product.amount }} {{ (product.foodId | food)?.unit }}
+    </div>
 
-      <div class="number">{{a + 1}}</div>
-      <div class="text">{{(product.foodId |food)?.name}}</div>
-      <div class="number">{{product.amount}} {{(product.foodId | food)?.unit}}</div>
-
-    <button class="button" mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="allowEdit">
+    <button
+      class="button"
+      mat-icon-button
+      [matMenuTriggerFor]="appMenu"
+      *ngIf="allowEdit"
+    >
       <mat-icon>more_vert</mat-icon>
     </button>
-
     <mat-menu #appMenu>
       <button mat-menu-item (click)="delete.emit(product.foodId)">Usuń</button>
       <button mat-menu-item (click)="edit.emit(product.foodId)">Edytuj</button>
+      <button mat-menu-item (click)="ddd(product.foodId)">DDD</button>
     </mat-menu>
-
   </div>
 </div>

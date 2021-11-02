@@ -1,4 +1,12 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { fromEvent } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-calculator2',
@@ -14,6 +22,7 @@ export class CalculatorComponent implements OnInit {
   isSign = false;
   lastSign = '';
   NaN = false;
+  oldNumber = 0;
 
   @HostListener('window:keyup', ['$event']) keyEvent(event: KeyboardEvent) {
     console.log(event.key);
@@ -89,19 +98,19 @@ export class CalculatorComponent implements OnInit {
 
   result(what) {
     switch (this.lastSign) {
-      case '+': // dodawanie
+      case '+':
         this.NaN = false;
         this.display = String(Number(this.symbols2) + Number(this.symbols1));
         break;
-      case '-': // odejmowanie
+      case '-':
         this.NaN = false;
         this.display = String(Number(this.symbols2) - Number(this.symbols1));
         break;
-      case '*': // mnożenie
+      case '*':
         this.NaN = false;
         this.display = String(Number(this.symbols2) * Number(this.symbols1));
         break;
-      case '/': // dzielenie
+      case '/':
         this.NaN = false;
         this.display = String(Number(this.symbols2) / Number(this.symbols1));
         break;

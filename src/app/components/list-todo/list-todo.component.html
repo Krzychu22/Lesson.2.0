@@ -3,17 +3,20 @@
     <mat-form-field appearance="fill">
       <mat-label>Projekt:</mat-label>
       <label>
-        <input matInput formControlName="title" (keyup.enter)="addTask()">
+        <input matInput formControlName="title" (keyup.enter)="addTask()" />
       </label>
     </mat-form-field>
-    <button mat-raised-button (click)="addTask()" [disabled]="model.invalid">DODAJ</button>
-
+    <button mat-raised-button (click)="addTask()" [disabled]="model.invalid">
+      DODAJ
+    </button>
   </div>
   <div class="tasks">
-
+    in
     <mat-list>
       <mat-list-item *ngFor="let task of tasks$ | async; index as i">
-        <a [routerLink]="['/todo',task.projectId]">{{i + 1}}. {{task.title}} </a>
+        <a [routerLink]="['/todo', task.projectId]"
+          >{{ i + 1 }}. {{ task.title }}
+        </a>
 
         <button mat-icon-button [matMenuTriggerFor]="appMenu">
           <mat-icon>more_vert</mat-icon>
@@ -24,9 +27,6 @@
           <button mat-menu-item>Edytuj</button>
         </mat-menu>
       </mat-list-item>
-
     </mat-list>
-
   </div>
 </table>
-

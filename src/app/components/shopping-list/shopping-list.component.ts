@@ -1,13 +1,15 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {ShoppingListService, TaskInterface} from '../../services/shopping-list.service';
-import {Observable} from 'rxjs';
-
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import {
+  ShoppingListService,
+  TaskInterface,
+} from '../../services/shopping-list.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.scss']
+  styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
   model = this.fb.group({
@@ -20,7 +22,7 @@ export class ShoppingListComponent implements OnInit {
   @Input() set taskType(type) {
     this._taskType = type;
     this.tasks$ = this.shoppingService.getTasks(this.taskType);
-  };
+  }
 
   get taskType() {
     return this._taskType;
@@ -31,8 +33,11 @@ export class ShoppingListComponent implements OnInit {
   isEdit = false;
   editedIndex = null;
 
-  constructor(private fb: FormBuilder, private shoppingService: ShoppingListService, private cd: ChangeDetectorRef) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private shoppingService: ShoppingListService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   /**
    * tu tworzą się zadania
@@ -40,7 +45,7 @@ export class ShoppingListComponent implements OnInit {
   addTask() {
     this.shoppingService.addTask({
       ...this.model.getRawValue(),
-      type: this.taskType
+      type: this.taskType,
     });
     this.model.reset();
   }
@@ -53,8 +58,7 @@ export class ShoppingListComponent implements OnInit {
     this.shoppingService.toggleTaskDone(index);
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * tu jest reset

@@ -168,4 +168,11 @@ leo turpis scelerisque eros, quis pellentesque tortor quam sed quam.</div>
       title: 'Integer eu rutrum slectus',
     } as Partial<CoverAnimationComponent>,
     component: CoverAnimationComponent,
+  }))
+  .add('cos', () => ({
+    template: `<app-calculator2></app-calculator2>`,
+    props: {
+      position: { top: 30, left: 60 },
+    } as Partial<FlyPlaneComponent>,
+    component: FlyPlaneComponent,
   }));

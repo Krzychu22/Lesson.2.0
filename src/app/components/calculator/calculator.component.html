@@ -1,7 +1,6 @@
 <div class="calculator">
-  <div class="window">
-    <input
-      [(ngModel)]="display">
+  <div class="window" #observed>
+    <input [(ngModel)]="display" />
   </div>
   <div class="symbols">
     <div (click)="number(1)">

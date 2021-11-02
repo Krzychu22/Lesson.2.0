@@ -2,5 +2,8 @@
 <div [formGroup]="model">
   <input type="range" formControlName="x" min="0" max="100" />
 </div>
-{{(model.valueChanges | async)?.x}}
-<div class="mouse" [ngStyle]="{'top.px':(move$ | async).top,'left.px':(move$ | async).left}"></div>
+{{ (model.valueChanges | async)?.x }}
+<div
+  class="mouse"
+  [ngStyle]="{ 'top.px': (move$ | async).top, 'left.px': (move$ | async).left }"
+></div>

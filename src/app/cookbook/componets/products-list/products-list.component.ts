@@ -16,4 +16,11 @@ export class ProductsListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  ddd(foodId: string) {
+    this.products.splice(
+      this.products.findIndex((product) => product.foodId === foodId),
+      1
+    );
+  }
 }
